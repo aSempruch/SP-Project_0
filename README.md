@@ -22,3 +22,10 @@ Outline:
         
 4. Exit
     - Write sorted array into .csv file
+
+Data Structure:
+
+	[0] -> |Title| |Year| ...
+	[1] -> |Title| |Year| ...
+	[2] -> etc...
+	 
