@@ -9,6 +9,7 @@ Outline:
 2. Read data into array of structs
     - Read first row of database and place into global struct variable
     - Read each row, place into individual struct, place in unsorted array
+        -Might have to write a separate insert function for this. 
     - Inner loop writes data to struct and is managed by counter with the value of the amount of categories
     - Save sorting keyword into variable
     - Pass sorting keyword and pointer to array into mergesort.c function
