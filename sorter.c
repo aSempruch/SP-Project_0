@@ -2,7 +2,8 @@
 #include <stdlib.h>
 
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[])
+{
 	
 	if(argc != 3)
 	{
@@ -10,7 +11,7 @@ int main(int argc, char* argv[]){
 		exit(1);
 	}	
 	
-	/*
+	/*		STEP 1
 	 *Note: 'info' will be the array the file will be written into.
 	 *Also the file pointer and opener will be innitalized here too. 
 	 */
@@ -28,6 +29,14 @@ int main(int argc, char* argv[]){
 		printf("ERROR02: Trouble opening file. Try again.\n");
 		return 0;
 	}
+	   
+	 /*		STEP 2
+	  *Start writing the file into the array
+	  */
+	while(!feof(fp))
+	{
+		//CODE	
+	}
 		
-	return 0;
+return 0;
 }
