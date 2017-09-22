@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 
+
 int main(int argc, char* argv[])
 {
 	
@@ -17,8 +18,7 @@ int main(int argc, char* argv[])
 	 */
 	char *file = argv[1];
 	FILE *fp = fopen(file,"r");
-	const char* info[5001][29];
-	
+		
 	if(!(fp = fopen(argv[1],"r")))
 	{
 		printf("ERROR01: Invalid or empty file. Try again.\n");
@@ -33,10 +33,34 @@ int main(int argc, char* argv[])
 	 /*		STEP 2
 	  *Start writing the file into the array
 	  */
+	int numOfEntries = 0, numOfColumns = 0;
+	//Counts number of entries and columns
+	char buff;
 	while(!feof(fp))
 	{
-		//CODE	
+		fscanf(fp, "%c", buff);
+		if(numOfEntries == 0){
+			if(buff == ',')
+				numOfColumns++;
+		}
+		if(buff = 'C'){
+			fscanf(fp, "%c", buff);
+			if(buff = 'O'){
+				fscanf(fp, "%c", buff);
+				if(buff = 'L'){
+					fscanf(fp, "%c", buff);
+					if(buff = 'O'){
+						fscanf(fp, "%c", buff);
+	                                        if(buff = 'R'){
+							numOfEntries++;
+						}
+					}
+
+				}
+			}
+		}
 	}
-		
+	const char* info[numOfEntries][numOfColumns];
+
 return 0;
 }
