@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
 	FILE *fp = fopen(file,"r");
 	const char* info[5001][29];
 	
-	if(!(fp = fopen(fp))
+	if(!(fp = fopen(argv[1],"r")))
 	{
 		printf("ERROR01: Invalid or empty file. Try again.\n");
 		return 0;
