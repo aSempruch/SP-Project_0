@@ -38,20 +38,20 @@ int main(int argc, char* argv[])
 	char buff;
 	while(!feof(fp))
 	{
-		fscanf(fp, "%c", buff);
+		fscanf(fp, "%c", &buff);
 		if(numOfEntries == 0){
 			if(buff == ',')
 				numOfColumns++;
 		}
-		if(buff = 'C'){
-			fscanf(fp, "%c", buff);
-			if(buff = 'O'){
-				fscanf(fp, "%c", buff);
-				if(buff = 'L'){
-					fscanf(fp, "%c", buff);
-					if(buff = 'O'){
-						fscanf(fp, "%c", buff);
-	                                        if(buff = 'R'){
+		if(buff == 'C'){
+			fscanf(fp, "%c", &buff);
+			if(buff == 'O'){
+				fscanf(fp, "%c", &buff);
+				if(buff == 'L'){
+					fscanf(fp, "%c", &buff);
+					if(buff == 'O'){
+						fscanf(fp, "%c", &buff);
+	                                        if(buff == 'R'){
 							numOfEntries++;
 						}
 					}
