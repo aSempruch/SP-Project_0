@@ -5,19 +5,24 @@
 #include <time.h>
 #include "sorter.h"
 
-char *stream[1028];
+char stream[1028];
 movie** info;
 
 void allocate(int rows){
 	int r;
-	*info = malloc(rows * sizeof(movie*));
+	info = malloc(rows * sizeof(movie*));
+	//printf("Allocated main array\n");
 	for(r = 0; r < rows; r++){
 		info[r] = (movie*)malloc(sizeof(movie));
 	}
+	//printf("Allocated full array\n");
 }
 
-void insert(char* buff){
-
+void insert(char* line){
+	int k;
+	for(k = 0; k < strlen(line); k++){
+		
+	}
 }	
 
 int main(int argc, char* argv[])
@@ -77,9 +82,11 @@ int main(int argc, char* argv[])
 	/*NOTE TO ALAN:
 	 *https://www.techwalla.com/articles/how-to-read-a-csv-file-in-c
 	*/
+	allocate(numOfEntries);
 	while(!feof(fp))
 	{
-		fgets(*stream,sizeof(stream),fp);
+		fgets(stream,sizeof(stream),fp);
+		insert(stream);
 	}
 
 	printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
