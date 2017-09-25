@@ -3,6 +3,7 @@
 
 typedef struct movie_
 {
+	char *color;
 	char *director_name;
 	int num_critic_for_reviews;
 	int duration;
