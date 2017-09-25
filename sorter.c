@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	if(argc != 3)
 	{
 		printf("ERROR00: Invalid number of inputs");
-		exit(1);
+		return 0;
 	}	
 	
 	/*		STEP 1
@@ -36,30 +36,16 @@ int main(int argc, char* argv[])
 	  *Count number of entries and columns
 	  */
 	int numOfEntries = 0, numOfColumns = 0;
-	char buff[6];
+	int buff;
 	while(!feof(fp))
 	{
-		fscanf(fp, "%c", &buff);
+		buff = (char)fgetc(fp);
 		if(numOfEntries == 0){
 			if(buff == ',')
 				numOfColumns++;
 		}
-		if(buff == 'C' || buff == 'B'){
-			fscanf(fp, "%c", &buff);
-			if(buff == 'O' || buff == 'L'){
-				fscanf(fp, "%c", &buff);
-				if(buff == 'L' || buff == 'A'){
-					fscanf(fp, "%c", &buff);
-					if(buff == 'O' || buff == 'C'){
-						fscanf(fp, "%c", &buff);
-	                                        if(buff == 'R'|| buff == 'K'){
-							numOfEntries++;
-						}
-					}
-
-				}
-			}
-		}
+		if(buff == '\n')
+			numOfEntries++;						
 	}
 	
 
@@ -80,7 +66,7 @@ int main(int argc, char* argv[])
 	/*NOTE TO ALAN:
 	 *https://www.techwalla.com/articles/how-to-read-a-csv-file-in-c
 	*/
-	while(!feof(fp))
+	/*while(!feof(fp))
 	{
 		fgets(stream,sizeof(stream),fp);
 		token = strtok(stream, ",");
@@ -88,9 +74,10 @@ int main(int argc, char* argv[])
 		
 		
 		
-	}
+	}*/
 
-		      
-fclose(fp);
-return 0;
+	printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
+
+	fclose(fp);
+	return 0;
 }
