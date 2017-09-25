@@ -2,8 +2,23 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
+#include "sorter.h"
 
 char *stream[1028];
+movie** info;
+
+void allocate(int rows){
+	int r;
+	*info = malloc(rows * sizeof(movie*));
+	for(r = 0; r < rows; r++){
+		info[r] = (movie*)malloc(sizeof(movie));
+	}
+}
+
+void insert(char* buff){
+
+}	
 
 int main(int argc, char* argv[])
 {
@@ -12,7 +27,7 @@ int main(int argc, char* argv[])
 	{
 		printf("ERROR00: Invalid number of inputs");
 		return 0;
-	}	
+	}
 	
 	/*		STEP 1
 	 *Note: 'info' will be the array the file will be written into.
@@ -35,7 +50,7 @@ int main(int argc, char* argv[])
 	 /*		STEP 2.1
 	  *Count number of entries and columns
 	  */
-	int numOfEntries = 0, numOfColumns = 0;
+	int numOfEntries = 0, numOfColumns = 1;
 	int buff;
 	while(!feof(fp))
 	{
@@ -47,13 +62,9 @@ int main(int argc, char* argv[])
 		if(buff == '\n')
 			numOfEntries++;						
 	}
-	
 
-	const char* info[numOfEntries][numOfColumns];
 	rewind(fp);
-	int ctr, row=1, col=0;
-	char *token;
-	
+
 	/*		STEP 2.2
 	 *Wrtie file into array
 	 
@@ -66,15 +77,10 @@ int main(int argc, char* argv[])
 	/*NOTE TO ALAN:
 	 *https://www.techwalla.com/articles/how-to-read-a-csv-file-in-c
 	*/
-	/*while(!feof(fp))
+	while(!feof(fp))
 	{
-		fgets(stream,sizeof(stream),fp);
-		token = strtok(stream, ",");
-		
-		
-		
-		
-	}*/
+		fgets(*stream,sizeof(stream),fp);
+	}
 
 	printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
 
