@@ -5,23 +5,34 @@
 #include <time.h>
 #include "sorter.h"
 
+int index = 0;
 char stream[1028];
 movie** info;
 
 void allocate(int rows){
 	int r;
 	info = malloc(rows * sizeof(movie*));
-	//printf("Allocated main array\n");
 	for(r = 0; r < rows; r++){
 		info[r] = (movie*)malloc(sizeof(movie));
 	}
-	//printf("Allocated full array\n");
 }
 
 void insert(char* line){
-	int k;
+	int k, element = 0;
+	//tokenize elements and insert them into "info" structure
 	for(k = 0; k < strlen(line); k++){
-		
+		element++;
+		//String type
+		if(element == 1 || element == 2 || element == 7 || element == 10 || element == 11 || element == 12 || element == 15 || element == 17 || element == 18 || element == 20 || element == 21 || element == 22){
+			info[index]->color = (char*)malloc(128*sizeof(char));
+			int position = 0;
+			while(line[k] != ','){
+				info[index]->color[position] = line[k];
+				position++;
+				k++;
+			}
+			k++;
+		}
 	}
 }	
 
