@@ -30,11 +30,10 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 	   
-	 /*		STEP 2
-	  *Start writing the file into the array
+	 /*		STEP 2.1
+	  *Count number of entries and columns
 	  */
 	int numOfEntries = 0, numOfColumns = 0;
-	//Counts number of entries and columns
 	char buff;
 	while(!feof(fp))
 	{
@@ -61,6 +60,17 @@ int main(int argc, char* argv[])
 		}
 	}
 	const char* info[numOfEntries][numOfColumns];
+	rewind(fp);
+	/*		STEP 2.2
+	 *Wrtie file into array
+	 *
+	//Since we have 28 feilds, we can use a counter to determine which feild we are currently on
+	//That way with testcases that don't have certain feilds in them we can increment the counter to
+	*/g o the next element in the array
+	while(!feof(fp))
+	{
+				
+	}
 
 return 0;
 }
