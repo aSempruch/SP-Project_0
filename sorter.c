@@ -51,6 +51,8 @@ int main(int argc, char* argv[])
 		printf("ERROR02: Trouble opening file. Try again.\n");
 		return 0;
 	}
+
+
 	   
 	 /*		STEP 2.1
 	  *Count number of entries and columns
@@ -70,18 +72,15 @@ int main(int argc, char* argv[])
 
 	rewind(fp);
 
+
+
 	/*		STEP 2.2
-	 *Wrtie file into array
+	 *Write file into array
 	 
 	 *Since we have 28 feilds, we can use a counter to determine which feild we are currently on
 	 *That way with testcases that don't have certain feilds in them we can increment the counter to
 	 *go to the next element in the array
 	**/
-
-	
-	/*NOTE TO ALAN:
-	 *https://www.techwalla.com/articles/how-to-read-a-csv-file-in-c
-	*/
 	allocate(numOfEntries);
 	while(!feof(fp))
 	{
