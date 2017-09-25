@@ -33,5 +33,4 @@ typedef struct movie_
 	int movie_facebook_likes;
 }movie;
 
-
 #endif
