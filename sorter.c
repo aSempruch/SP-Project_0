@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-
+char *stream[1028];
 
 int main(int argc, char* argv[])
 {
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 	  *Count number of entries and columns
 	  */
 	int numOfEntries = 0, numOfColumns = 0;
-	char buff;
+	char buff[6];
 	while(!feof(fp))
 	{
 		fscanf(fp, "%c", &buff);
@@ -44,15 +44,15 @@ int main(int argc, char* argv[])
 			if(buff == ',')
 				numOfColumns++;
 		}
-		if(buff == 'C'){
+		if(buff == 'C' || buff == 'B'){
 			fscanf(fp, "%c", &buff);
-			if(buff == 'O'){
+			if(buff == 'O' || buff == 'L'){
 				fscanf(fp, "%c", &buff);
-				if(buff == 'L'){
+				if(buff == 'L' || buff == 'A'){
 					fscanf(fp, "%c", &buff);
-					if(buff == 'O'){
+					if(buff == 'O' || buff == 'C'){
 						fscanf(fp, "%c", &buff);
-	                                        if(buff == 'R'){
+	                                        if(buff == 'R'|| buff == 'K'){
 							numOfEntries++;
 						}
 					}
@@ -61,9 +61,13 @@ int main(int argc, char* argv[])
 			}
 		}
 	}
+	
+
 	const char* info[numOfEntries][numOfColumns];
 	rewind(fp);
-	int ctr; 
+	int ctr, row=1, col=0;
+	char *token;
+	
 	/*		STEP 2.2
 	 *Wrtie file into array
 	 
@@ -73,12 +77,20 @@ int main(int argc, char* argv[])
 	**/
 
 	
-/*NOTE TO ALAN:
- *https://www.techwalla.com/articles/how-to-read-a-csv-file-in-c
-*/
+	/*NOTE TO ALAN:
+	 *https://www.techwalla.com/articles/how-to-read-a-csv-file-in-c
+	*/
 	while(!feof(fp))
 	{
+		fgets(stream,sizeof(stream),fp);
+		token = strtok(stream, ",");
+		
+		
+		
+		
 	}
 
+		      
+fclose(fp);
 return 0;
 }
