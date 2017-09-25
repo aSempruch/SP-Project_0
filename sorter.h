@@ -5,7 +5,7 @@ typedef struct movie_
 {
 	char *color;
 	char *director_name;
-	int num_critic_for_reviews;
+	int num_critic_reviews;
 	int duration;
 	int director_facebook_likes;
 	int actor_3_facebook_likes;
