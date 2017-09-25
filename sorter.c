@@ -61,15 +61,21 @@ int main(int argc, char* argv[])
 	}
 	const char* info[numOfEntries][numOfColumns];
 	rewind(fp);
+	int ctr; 
 	/*		STEP 2.2
 	 *Wrtie file into array
-	 *
-	//Since we have 28 feilds, we can use a counter to determine which feild we are currently on
-	//That way with testcases that don't have certain feilds in them we can increment the counter to
-	*/g o the next element in the array
+	 
+	 *Since we have 28 feilds, we can use a counter to determine which feild we are currently on
+	 *That way with testcases that don't have certain feilds in them we can increment the counter to
+	 *go to the next element in the array
+	**/
+
+	
+/*NOTE TO ALAN:
+ *https://www.techwalla.com/articles/how-to-read-a-csv-file-in-c
+*/
 	while(!feof(fp))
 	{
-				
 	}
 
 return 0;
