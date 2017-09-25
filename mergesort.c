@@ -37,6 +37,6 @@ void merge(movie *array, int p, int q, int r, char *word)
 
 	while(i<m1 && j<size2)
 	{
-		//Compare Code here
+		//Compare Code added here
 	}
 }
