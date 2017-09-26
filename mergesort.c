@@ -24,7 +24,7 @@ int getKey(char *word, movie array[][28])
 	int c = atoi(word), i, w;
 	for(i=0; i<28;i++)
 	{
-		w = atoi(array[i]);
+		w = atoi(array[0][i]);
 		if( w == c)
 		{
 			return i;
