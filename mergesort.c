@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "sorter.h"
 
-void mergesort(movie *array, int a, int b)
+void mergesort(movie array[][col], int a, int b)
 {
 //a(p) is left index, b(r) is right, m(q) is middle
 	int l = a, r =b, m;
@@ -16,6 +16,20 @@ void mergesort(movie *array, int a, int b)
 	}
 }
 
+//This function loops into columns of the array to search for 
+//the index of the key word given to sort by
+int getKey(char *word, movie array[][col])
+{
+	int c = atoi(word), i;
+	for(i=0; i<col;i++)
+	{
+		if(atoi(array[i]) == c)
+		{
+			return i;
+		}
+	}	
+return NULL;
+}
 void merge(movie array[][col], int p, int q, int r, char *word)
 {
 	int i,j,k;
