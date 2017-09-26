@@ -4,14 +4,15 @@
 
 void mergesort(movie *array, int a, int b)
 {
-	int p = a, r =b, q;
+//a(p) is left index, b(r) is right, m(q) is middle
+	int l = a, r =b, m;
 
-	if(p<r)
+	if(l<r)
 	{
-		q = (p+r)/2;
-		mergesort(array,p,q);
-		mergesort(array,q+1, r);
-		merge(array, p, q, r);
+		m = (l+r)/2;
+		mergesort(array,l,m);
+		mergesort(array,m+1, r);
+		merge(array, l, m, r);
 	}
 }
 
