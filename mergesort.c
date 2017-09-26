@@ -22,9 +22,11 @@ void mergesort(movie array[][28], int a, int b)
 int getKey(char *word, movie array[][28])
 {
 	int c = atoi(word), i, w;
+	char *var;
 	for(i=0; i<28;i++)
 	{
-		w = atoi(array[0][i]);
+		memcpy(var, array[i], sizeof(array[0][i]));
+		w = atoi(var);
 		if( w == c)
 		{
 			return i;
