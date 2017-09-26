@@ -19,6 +19,7 @@ void allocate(int rows){
 
 //Returns a char pointer to the requested element in the struct
 char* getString(int element){
+printf("Enterred getString Function.\n");
 	switch(element){
 		case 1:
 			return info[entry]->color;
@@ -49,6 +50,7 @@ char* getString(int element){
 }
 
 int* getInt(int element){
+printf("Enterred getInt function.\n");
 	switch(element){
 		case 3:
 			return &info[entry]->num_critic_reviews;
@@ -83,6 +85,7 @@ int* getInt(int element){
 }
 
 float* getFloat(int element){
+printf("Enter getFloat function.\n");
 	switch(element){
 		case 26:
 			return &info[entry]->imdb_score;
@@ -92,10 +95,16 @@ float* getFloat(int element){
 	return NULL;
 }
 
+
+
+
 void insert(char* line){
+	printf("Instert function start.\n");
+
 	int k, element = 0;
 	//tokenize elements and insert them into "info" structure
-	for(k = 0; k < strlen(line); k++){
+	for(k = 0; k < strlen(line); k++)
+	{
 		element++;
 		//String type handling
 		if(element==1||element==2||element==7||element==10||element==11||element==12||element==15||element==17||element==18||element==20||element==21||element==22){
@@ -108,6 +117,8 @@ void insert(char* line){
 				k++;
 			}k++;
 		}
+
+
 		//Int type handling
 		if(element==3||element==4||element==5||element==6||element==8||element==9||element==13||element==14||element==16||element==19||element==23||element==24||element==25||element==28){
 			int* val = getInt(element);
@@ -121,6 +132,8 @@ void insert(char* line){
 			*val = atoi(temp);
 			free(temp);
 		}
+
+
 		//Float type handling
 		if(element==26||element==27){
 			float* val = getFloat(element);
@@ -135,14 +148,21 @@ void insert(char* line){
 			free(temp);
 		}
 	}
+printf("Instert functin end.\n");
 }	
+
+
+
+
+
+
 
 int main(int argc, char* argv[])
 {
 	
 	if(argc != 3)
 	{
-		printf("ERROR00: Invalid number of inputs");
+		printf("ERROR00: Invalid number of inputs.\n");
 		return 0;
 	}
 	
@@ -193,11 +213,17 @@ int main(int argc, char* argv[])
 	 *go to the next element in the array
 	**/
 	allocate(numOfEntries);
+
 	while(!feof(fp))
 	{
+		
 		fgets(stream,sizeof(stream),fp);
+		printf("Stream --> %s\n", stream);
 		insert(stream);
+		
+		
 	}
+
 
 	printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
 
