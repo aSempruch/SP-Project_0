@@ -6,7 +6,7 @@
 #include "sorter.h"
 
 int entry;
-char stream[1028];
+char stream[1024];
 movie** info;
 
 void allocate(int rows){
@@ -19,7 +19,7 @@ void allocate(int rows){
 
 //Returns a char pointer to the requested element in the struct
 char* getString(int element){
-printf("Enterred getString Function.\n");
+	printf("Enterred getString Function.\n");
 	switch(element){
 		case 1:
 			return info[entry]->color;
@@ -50,7 +50,7 @@ printf("Enterred getString Function.\n");
 }
 
 int* getInt(int element){
-printf("Enterred getInt function.\n");
+	printf("Enterred getInt function.\n");
 	switch(element){
 		case 3:
 			return &info[entry]->num_critic_reviews;
@@ -85,7 +85,7 @@ printf("Enterred getInt function.\n");
 }
 
 float* getFloat(int element){
-printf("Enter getFloat function.\n");
+	printf("Enter getFloat function.\n");
 	switch(element){
 		case 26:
 			return &info[entry]->imdb_score;
@@ -100,8 +100,8 @@ printf("Enter getFloat function.\n");
 
 void insert(char* line){
 	printf("Instert function start.\n");
-
 	int k, element = 0;
+	//printf("First character in line: %c\n", line[0]);
 	//tokenize elements and insert them into "info" structure
 	for(k = 0; k < strlen(line); k++)
 	{
@@ -111,11 +111,13 @@ void insert(char* line){
 			char* val = getString(element);
 			val = malloc(128*sizeof(char));
 			int position = 0;
+			//printf("Entered string while loop\n");
 			while(line[k] != ','){
-				val[position] = line[k];
+				strncpy(&val[position], &line[k], 1);
 				position++;
 				k++;
-			}k++;
+			}
+			printf("Exited string while loop\n");
 		}
 
 
@@ -124,12 +126,15 @@ void insert(char* line){
 			int* val = getInt(element);
 			char* temp = malloc(sizeof(char)*128);
 			int position = 0;
-			while(line[k] != ','){
-				temp[position] = line[k];
+			while(line[k] != ',' && line[k] != '\n'){
+				if(element!=28)
+					printf("Position: %d '%c'\n", position, line[k]);
+				strncpy(&temp[position],&line[k], 1);
 				position++;
 				k++;
-			}k++;
+			}
 			*val = atoi(temp);
+			//printf("About to free temp\n");
 			free(temp);
 		}
 
@@ -143,12 +148,12 @@ void insert(char* line){
 				temp[position] = line[k];
 				position++;
 				k++;
-			}k++;
+			}
 			*val = atof(temp);
 			free(temp);
 		}
 	}
-printf("Instert functin end.\n");
+	//printf("Instert function end.\n");
 }	
 
 
@@ -213,20 +218,20 @@ int main(int argc, char* argv[])
 	 *go to the next element in the array
 	**/
 	allocate(numOfEntries);
-
+	int k = 0;
 	while(!feof(fp))
 	{
 		
 		fgets(stream,sizeof(stream),fp);
-		printf("Stream --> %s\n", stream);
-		insert(stream);
-		
-		
+		//printf("Stream --> %s\n", stream);
+		if(k != 0)
+			insert(stream);
+		else
+			k = 1;		
 	}
 
 
-	printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
-
+	//printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
 	fclose(fp);
 	return 0;
 }

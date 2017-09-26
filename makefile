@@ -1,7 +1,5 @@
 all: program
-sorter: sorter.c mergesort.c sorter.h
-	gcc -g -Wall sorter.c mergesort.c sorter.h -o sorter
-mergesort: mergesort.c sorter.h
-	gcc -g -Wall mergesort.c sorter.h -o mergesort
+sorter: sorter.c sorter.h
+	gcc -g -Wall sorter.c sorter.h -o sorter
 clean:
-	rm -rf sorter mergesort *.o
+	rm -rf sorter *.o

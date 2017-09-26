@@ -1,0 +1,217 @@
+commit 2ee62a418899db919fcedf9739b6bfc8e380ed14
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Mon Sep 25 22:43:17 2017 -0400
+
+    Finished tokenizing and inserting to structure
+
+commit 4900766bdf42e9c667282f0171a6da01716a470f
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Mon Sep 25 19:08:04 2017 -0400
+
+    Updated insert function in sorter.c
+
+commit 0ed4f8c8a014660f157c4ab0bde2269bb803169f
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Mon Sep 25 18:18:27 2017 -0400
+
+    Fixed allocate seg fault
+
+commit f0a1ee2f9f712bc31a29511f894ee6be025d27f5
+Merge: b9cea1c 56e0c93
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Mon Sep 25 18:17:59 2017 -0400
+
+    Merge branch 'master' of github.com:aSempruch/SystemsProgramming-Project1
+
+commit b9cea1c0d5bc22d5b73e9d90715c6d949ff8cc18
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Mon Sep 25 18:15:12 2017 -0400
+
+    Fixed allocate seg fault
+
+commit 56e0c939c8c2b08212e8b9bd04fa5f2556ad93b5
+Author: Sarah Khasawneh <sk1683@grep.cs.rutgers.edu>
+Date:   Mon Sep 25 17:56:52 2017 -0400
+
+    Commiting new MergeSort code
+
+commit d38c6731e0b646abbf86a637cfbb12cc915bc947
+Merge: 3997a6d 92c3eda
+Author: Sarah Khasawneh <sk1683@grep.cs.rutgers.edu>
+Date:   Mon Sep 25 17:53:40 2017 -0400
+
+    Merging because something happened
+
+commit 3997a6d8c7707c3ce0f523118eed0495cdca9e20
+Author: Sarah Khasawneh <sk1683@grep.cs.rutgers.edu>
+Date:   Mon Sep 25 17:51:21 2017 -0400
+
+    Started coding mergesort
+
+commit 92c3eda10ed8783d6433014bae379834e97186c5
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Mon Sep 25 17:50:53 2017 -0400
+
+    Malloced array info array
+
+commit f17f79e8ed2885fa669cbf3b5cbf10ebc2e52701
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Mon Sep 25 16:56:35 2017 -0400
+
+    Added entry and column counting
+
+commit b85826f9fb0794c349997b2f8300b718079875e0
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Mon Sep 25 16:49:00 2017 -0400
+
+    Add files via upload
+
+commit f9be6524f716105c096d7549d62480b8ae8c4f84
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Mon Sep 25 16:02:54 2017 -0400
+
+    Update sorter.c
+
+commit 642bb7c188775d0e6d8cd8ba813cb14ada0b737f
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Mon Sep 25 14:32:54 2017 -0400
+
+    Update sorter.h
+
+commit 808af2cc565683047ccf675a2ecf92812af461fb
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Mon Sep 25 14:25:42 2017 -0400
+
+    Update sorter.h
+
+commit 4a910468c9d4ce2fe3cc7569431c5399d288a721
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Mon Sep 25 14:22:30 2017 -0400
+
+    Update sorter.c
+
+commit 19f754f8212db078766dc53f45a747d784039475
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Mon Sep 25 14:17:59 2017 -0400
+
+    Update sorter.c
+
+commit f95f3f88247a66a849ee675d1f51efe1baa6f9ad
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Mon Sep 25 14:08:51 2017 -0400
+
+    Update sorter.c
+
+commit 4e727df392f931dab44695bb70452fb2b873a51d
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Fri Sep 22 15:12:44 2017 -0400
+
+    Fixed entry counting (needs to be tested so can you upload the example file?)
+
+commit 585a7e68948be8692fa771c76214237593fe2d93
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Fri Sep 22 14:49:11 2017 -0400
+
+    Added entry counting (needs to be fixed)
+
+commit d8ddb55cd85a2d884c4221f18f1da2098b0b6abc
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Fri Sep 22 14:25:23 2017 -0400
+
+    Fixed make file and sorter.c
+
+commit 09323afccacfff23d49ed20219887ae21c5d91c2
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Fri Sep 22 00:21:30 2017 -0400
+
+    Update sorter.c
+
+commit cf97812e6e59ee1d1ab5290993f18e86bebd8988
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Fri Sep 22 00:18:12 2017 -0400
+
+    Update sorter.c
+
+commit 3cc6c5e456cf6bc239728e90dce871f779471bec
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Thu Sep 21 18:19:43 2017 -0400
+
+    Create makefile
+
+commit 5e8ec9d27c1ec2acd5fab0774c0db347a5f29343
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Thu Sep 21 17:09:43 2017 -0400
+
+    Visualized data structure in README.md
+
+commit 59e434fdaff21a546f07c956f25987db6f3efff7
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Thu Sep 21 02:35:30 2017 -0400
+
+    Update sorter.h
+
+commit b414a4760b88c93b05c10cb505f5157fa375a022
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Thu Sep 21 01:47:31 2017 -0400
+
+    Update README.md
+
+commit 4f31d8e82af44f7958912d99d8f9f78cc334404e
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Thu Sep 21 01:33:48 2017 -0400
+
+    Update README.md
+
+commit ea65462b25e140cb3b6fe1710054366bc66db180
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Thu Sep 21 00:29:10 2017 -0400
+
+    Added the assignment from Sakai as a txt file Assignment.txt
+
+commit e04ff25b482a96f9a5a3563b203c38130f86ec38
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Wed Sep 20 20:11:03 2017 -0400
+
+    Basic error check
+
+commit 1829c620a9a5faaf1463cdfcb1bcd36dbe9ef93b
+Author: aSempruch <alan.sempruch.rhs@gmail.com>
+Date:   Wed Sep 20 20:04:33 2017 -0400
+
+    Skeleton
+
+commit 474ddc8303ffd607d987a63c2607f9cd5d21c521
+Author: aSempruch <32146438+aSempruch@users.noreply.github.com>
+Date:   Wed Sep 20 18:58:08 2017 -0400
+
+    Program Outline
+
+commit d293e81663d3df3655b10dc4b28d7d0acb26524a
+Author: aSempruch <32146438+aSempruch@users.noreply.github.com>
+Date:   Wed Sep 20 18:33:58 2017 -0400
+
+    Test
+
+commit 87d1bb8bf2daca2f1faa912319dde9c40b7a3f59
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Wed Sep 20 17:58:04 2017 -0400
+
+    Create sorter.h
+
+commit f1f54e47ad10cdbc4adf07c7a0d3429be4a6e36c
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Wed Sep 20 17:56:35 2017 -0400
+
+    Create mergesort.c
+
+commit 76e2ccdd2b25345fefb719d477a887bdbfa253e2
+Author: GreedyAlgorithm1 <sk1683@scarletmail.rutgers.edu>
+Date:   Wed Sep 20 17:53:46 2017 -0400
+
+    Create sorter.c
+
+commit a3ccccd097cebb5a23a759e0bca740c05e67babb
+Author: aSempruch <32146438+aSempruch@users.noreply.github.com>
+Date:   Wed Sep 20 17:48:42 2017 -0400
+
+    Initial commit
