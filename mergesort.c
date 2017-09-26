@@ -16,7 +16,7 @@ void mergesort(movie *array, int a, int b)
 	}
 }
 
-void merge(movie *array, int p, int q, int r, char *word)
+void merge(movie array[][col], int p, int q, int r, char *word)
 {
 	int i,j,k;
 	char *key = word;
@@ -39,5 +39,7 @@ void merge(movie *array, int p, int q, int r, char *word)
 	while(i<m1 && j<size2)
 	{
 		//Compare Code added here
+		
+
 	}
 }
