@@ -20,7 +20,6 @@ void mergesort(movie *array, int a, int b, char *word)
 //determines key for struct purposes
 int getKey(char *key)
 {
-	int i;
 	char *var = key;
 	if(strcmp(var, "color") == 0)
 		return  1;
