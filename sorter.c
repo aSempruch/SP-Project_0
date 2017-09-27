@@ -14,15 +14,25 @@ void allocate(int rows){
 	info = malloc(rows * sizeof(movie*));
 	for(r = 0; r < rows; r++){
 		info[r] = (movie*)malloc(sizeof(movie));
+		info[r]->color = (char*)malloc(sizeof(char));
+		info[r]->director_name = (char*)malloc(sizeof(char));
+		info[r]->actor_2_name = (char*)malloc(sizeof(char));
+		info[r]->genres = (char*)malloc(sizeof(char));
+		info[r]->actor_1_name = (char*)malloc(sizeof(char));
+		info[r]->movie_title = (char*)malloc(sizeof(char));
+		info[r]->actor_3_name = (char*)malloc(sizeof(char));
+		info[r]->plot_keywords = (char*)malloc(sizeof(char));
+		info[r]->movie_imdb_link = (char*)malloc(sizeof(char));
+		info[r]->language = (char*)malloc(sizeof(char));
+		info[r]->country = (char*)malloc(sizeof(char));
+		info[r]->content_rating = (char*)malloc(sizeof(char));
 	}
 }
 
 void deallocate(int rows){
 	int r;
 	for(r = 0; r < rows; r++){
-		//printf("Freeing entry number: %d\n", r);
 		free(&info[r]->color);
-		//printf("Director name: '%s'\n", info[r]->director_name);
 		free(&info[r]->director_name);
 		free(&info[r]->actor_2_name);
 		free(&info[r]->genres);
@@ -40,33 +50,34 @@ void deallocate(int rows){
 }
 
 //Returns a char pointer to the requested element in the struct
-char* getString(int element){
+char** getString(int element){
 	switch(element){
 		case 1:
-			return info[entry]->color;
+			return &info[entry]->color;
 		case 2:
-			return info[entry]->director_name;
+			return &info[entry]->director_name;
 		case 7:
-			return info[entry]->actor_2_name;
+			return &info[entry]->actor_2_name;
 		case 10:
-			return info[entry]->genres;
+			return &info[entry]->genres;
 		case 11:
-			return info[entry]->actor_1_name;
+			return &info[entry]->actor_1_name;
 		case 12:
-			return info[entry]->movie_title;
+			return &info[entry]->movie_title;
 		case 15:
-			return info[entry]->actor_3_name;
+			return &info[entry]->actor_3_name;
 		case 17:
-			return info[entry]->plot_keywords;
+			return &info[entry]->plot_keywords;
 		case 18:
-			return info[entry]->movie_imdb_link;
+			return &info[entry]->movie_imdb_link;
 		case 20:
-			return info[entry]->language;
+			return &info[entry]->language;
 		case 21:
-			return info[entry]->country;
+			return &info[entry]->country;
 		case 22:
-			return info[entry]->content_rating;
+			return &info[entry]->content_rating;
 	}
+	printf("Returning Null\n");
 	return NULL;
 }
 
@@ -86,6 +97,7 @@ int* getInt(int element){
 			return &info[entry]->gross;
 		case 13:
 			return &info[entry]->num_voted_users;
+			//Dynamically allocate string size
 		case 14:
 			return &info[entry]->cast_total_facebook_likes;
 		case 16:
@@ -115,33 +127,28 @@ float* getFloat(int element){
 }
 
 
-
+//Tokenize elements and insert them into "info" structure
 
 void insert(char* line){
 	int k, element = 0;
-	//tokenize elements and insert them into "info" structure
 	for(k = 0; k < strlen(line); k++)
 	{
 		element++;
 		//String type handling
 		if(element==1||element==2||element==7||element==10||element==11||element==12||element==15||element==17||element==18||element==20||element==21||element==22){
-			//char* val = getString(element);
-			
-			//Dynamically allocate string size
-			char* val = (char *)malloc(sizeof(char));
-			
+			char** val = getString(element);
+			//printf("Before: Val->%p | Struct->%p\n", *val, *getString(element));
 			int position = 0;
 			while(line[k] != ','){
-				val = (char *)realloc(val,position+2);
-				strncpy(&val[position], &line[k], 1);
+				*val = (char *)realloc(*val,position+2);
+				strncat(*val, &line[k], 1);
 				position++;
 				k++;
 			}
-			val[position] = '\0';
-			//Why can't I malloc a pointer returned by a function?
-			getString(element) = malloc(strlen(val)+1);
-			printf("String: %s %s\n", val, getString(element));
-			free(val);
+			//val[position] = '\0';
+			//printf("After: Val->%p | Struct->%p\n", *val, *getString(element));
+			printf("In Buffer: '%s' In Structure: '%s'\n", *val, *getString(element));
+			//free(val);
 		}
 
 
@@ -158,7 +165,7 @@ void insert(char* line){
 				k++;
 			}
 			*val = atoi(temp);
-			//printf("About to free temp\n");
+			printf("In Buffer: %d In Structure: %d\n", *val, *getInt(element));
 			free(temp);
 		}
 
@@ -174,6 +181,7 @@ void insert(char* line){
 				k++;
 			}
 			*val = atof(temp);
+			printf("In Buffer: %f In Structure: %f\n", *val, *getFloat(element));
 			free(temp);
 		}
 	}
@@ -245,6 +253,7 @@ int main(int argc, char* argv[])
 	int k = 0;
 	while(!feof(fp))
 	{
+			//val = (char *)malloc(sizeof(char));
 		
 		fgets(stream,sizeof(stream),fp);
 		//printf("Stream --> %s\n", stream);
@@ -255,10 +264,10 @@ int main(int argc, char* argv[])
 		entry++;	
 	}
 
-	printf("Genres: '%s'\n", info[100]->genres);
+	//printf("Genres: '%s'\n", info[100]->genres);
 	printf("Allocated: %d entries\n", entry);
-	printf("Deallocating\n");
-	deallocate(numOfEntries);
+	//printf("Deallocating\n");
+	//deallocate(numOfEntries);
 
 	printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
 	fclose(fp);

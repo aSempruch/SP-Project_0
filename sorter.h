@@ -33,7 +33,7 @@ typedef struct movie_
 	int movie_facebook_likes;
 }movie;
 
-char* getString(int element);
+char** getString(int element);
 int* getint(int element);
 float* getFloat(int element);
 void insert(char* line);
