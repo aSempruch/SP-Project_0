@@ -17,9 +17,28 @@ void allocate(int rows){
 	}
 }
 
+void deallocate(int rows){
+	int r;
+	for(r = 0; r < rows; r++){
+		free(&info[r]->color);
+		free(&info[r]->director_name);
+		free(&info[r]->actor_2_name);
+		free(&info[r]->genres);
+		free(&info[r]->actor_1_name);
+		free(&info[r]->movie_title);
+		free(&info[r]->actor_3_name);
+		free(&info[r]->plot_keywords);
+		free(&info[r]->movie_imdb_link);
+		free(&info[r]->language);
+		free(&info[r]->country);
+		free(&info[r]->content_rating);
+		free(info[r]);
+	}
+	free(info);
+}
+
 //Returns a char pointer to the requested element in the struct
 char* getString(int element){
-	printf("Enterred getString Function.\n");
 	switch(element){
 		case 1:
 			return info[entry]->color;
@@ -50,7 +69,6 @@ char* getString(int element){
 }
 
 int* getInt(int element){
-	printf("Enterred getInt function.\n");
 	switch(element){
 		case 3:
 			return &info[entry]->num_critic_reviews;
@@ -85,7 +103,6 @@ int* getInt(int element){
 }
 
 float* getFloat(int element){
-	printf("Enter getFloat function.\n");
 	switch(element){
 		case 26:
 			return &info[entry]->imdb_score;
@@ -99,9 +116,7 @@ float* getFloat(int element){
 
 
 void insert(char* line){
-	printf("Instert function start.\n");
 	int k, element = 0;
-	//printf("First character in line: %c\n", line[0]);
 	//tokenize elements and insert them into "info" structure
 	for(k = 0; k < strlen(line); k++)
 	{
@@ -155,7 +170,6 @@ void insert(char* line){
 			free(temp);
 		}
 	}
-	//printf("Instert function end.\n");
 }	
 
 
@@ -232,6 +246,7 @@ int main(int argc, char* argv[])
 			k = 1;		
 	}
 
+	deallocate(numOfEntries);
 
 	printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
 	fclose(fp);
