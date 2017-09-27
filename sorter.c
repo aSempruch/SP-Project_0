@@ -20,7 +20,9 @@ void allocate(int rows){
 void deallocate(int rows){
 	int r;
 	for(r = 0; r < rows; r++){
+		//printf("Freeing entry number: %d\n", r);
 		free(&info[r]->color);
+		//printf("Director name: '%s'\n", info[r]->director_name);
 		free(&info[r]->director_name);
 		free(&info[r]->actor_2_name);
 		free(&info[r]->genres);
@@ -123,10 +125,10 @@ void insert(char* line){
 		element++;
 		//String type handling
 		if(element==1||element==2||element==7||element==10||element==11||element==12||element==15||element==17||element==18||element==20||element==21||element==22){
-			char* val = getString(element);
+			//char* val = getString(element);
 			
 			//Dynamically allocate string size
-			val = (char *)malloc(sizeof(char));
+			char* val = (char *)malloc(sizeof(char));
 			
 			int position = 0;
 			while(line[k] != ','){
@@ -135,17 +137,22 @@ void insert(char* line){
 				position++;
 				k++;
 			}
-			val[position+1] = '\0';
-			printf("String: %s\n", val);
+			val[position] = '\0';
+			//Why can't I malloc a pointer returned by a function?
+			getString(element) = malloc(strlen(val)+1);
+			printf("String: %s %s\n", val, getString(element));
+			free(val);
 		}
 
 
 		//Int type handling
 		if(element==3||element==4||element==5||element==6||element==8||element==9||element==13||element==14||element==16||element==19||element==23||element==24||element==25||element==28){
+			//int init;
+			//int* val = &init;
 			int* val = getInt(element);
 			char* temp = malloc(sizeof(char)*128);
 			int position = 0;
-			while(line[k] != ',' && line[k] != '\n'){
+			while(line[k] != ',' && line[k] != '\n' && line[k] != '\0'){
 				strncpy(&temp[position],&line[k], 1);
 				position++;
 				k++;
@@ -204,7 +211,7 @@ int main(int argc, char* argv[])
 		printf("ERROR02: Trouble opening file. Try again.\n");
 		return 0;
 	}
-	entry = 0;
+	entry = -1;
 	   
 	 /*		STEP 2.1
 	  *Count number of entries and columns
@@ -234,6 +241,7 @@ int main(int argc, char* argv[])
 	 *go to the next element in the array
 	**/
 	allocate(numOfEntries);
+	numOfEntries--;
 	int k = 0;
 	while(!feof(fp))
 	{
@@ -247,6 +255,9 @@ int main(int argc, char* argv[])
 		entry++;	
 	}
 
+	printf("Genres: '%s'\n", info[100]->genres);
+	printf("Allocated: %d entries\n", entry);
+	printf("Deallocating\n");
 	deallocate(numOfEntries);
 
 	printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
