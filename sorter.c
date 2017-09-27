@@ -109,15 +109,16 @@ void insert(char* line){
 		//String type handling
 		if(element==1||element==2||element==7||element==10||element==11||element==12||element==15||element==17||element==18||element==20||element==21||element==22){
 			char* val = getString(element);
+			
+			//Dynamically allocates string size
 			val = malloc(128*sizeof(char));
+			
 			int position = 0;
-			//printf("Entered string while loop\n");
 			while(line[k] != ','){
 				strncpy(&val[position], &line[k], 1);
 				position++;
 				k++;
 			}
-			printf("Exited string while loop\n");
 		}
 
 
