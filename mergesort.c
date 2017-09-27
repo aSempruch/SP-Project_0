@@ -5,7 +5,7 @@
 
 void mergesort(movie *array, int a, int b, char *word)
 {
-//a(p) is left index, b(r) is right, m(q) is middle
+	//a(p) is left index, b(r) is right, m(q) is middle
 	char *key = word;
 	int l = a, r =b, m;
 	if(l<r)
