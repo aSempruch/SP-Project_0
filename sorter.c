@@ -110,15 +110,18 @@ void insert(char* line){
 		if(element==1||element==2||element==7||element==10||element==11||element==12||element==15||element==17||element==18||element==20||element==21||element==22){
 			char* val = getString(element);
 			
-			//Dynamically allocates string size
-			val = malloc(128*sizeof(char));
+			//Dynamically allocate string size
+			val = (char *)malloc(sizeof(char));
 			
 			int position = 0;
 			while(line[k] != ','){
+				val = (char *)realloc(val,position+2);
 				strncpy(&val[position], &line[k], 1);
 				position++;
 				k++;
 			}
+			val[position+1] = '\0';
+			printf("String: %s\n", val);
 		}
 
 
@@ -128,8 +131,6 @@ void insert(char* line){
 			char* temp = malloc(sizeof(char)*128);
 			int position = 0;
 			while(line[k] != ',' && line[k] != '\n'){
-				if(element!=28)
-					printf("Position: %d '%c'\n", position, line[k]);
 				strncpy(&temp[position],&line[k], 1);
 				position++;
 				k++;
@@ -232,7 +233,7 @@ int main(int argc, char* argv[])
 	}
 
 
-	//printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
+	printf("NumOfEntries: %d   NumOfColumns: %d\n", numOfEntries, numOfColumns);
 	fclose(fp);
 	return 0;
 }
