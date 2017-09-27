@@ -243,7 +243,8 @@ int main(int argc, char* argv[])
 		if(k != 0)
 			insert(stream);
 		else
-			k = 1;		
+			k = 1;
+		entry++;	
 	}
 
 	deallocate(numOfEntries);
