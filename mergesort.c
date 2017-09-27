@@ -84,7 +84,7 @@ int getKey(char *key)
 	
 return 0;
 }
-
+/*
 //Must put array into params
 void mergeString(movie *left, movie *right, int keyEle, int lI, int mI, int rI, int size1, int size2)
 {
@@ -176,7 +176,7 @@ void mergeFloat(movie *array, movie *left, movie *right, int keyEle, int lI, int
 
 }
 
-
+*/
 
 
 void merge(movie *array, int p, int q, int r, char *word)
@@ -206,19 +206,123 @@ void merge(movie *array, int p, int q, int r, char *word)
 	   || key == 12 || key == 15 || key == 17 || key == 18 || key == 20 || 
 		 key == 21 || key == 22)
 	{
-		mergeString(left, right, key, i,j,k, m1,m2);
+		//mergeString(left, right, key, i,j,k, m1,m2);
+		char *temp1 = malloc(50*sizeof(char));
+		char *temp2 = malloc(50*sizeof(char));
+		while(i<m1 && j<m2)
+		{
+			temp1 = getString(i);
+			temp2 = getString(j);
+			if(strcmp(temp1, temp2) < 0)
+			{
+				array[k] = left[i];
+				i++;
+			}
+			else
+			{
+				array[k] = right[j];
+				j++;
+			}
+			k++;
+		}  	
+		
+		while(i<m1)
+		{
+			array[k] = left[i];
+			i++;
+			k++;
+		}	
+		while(j<m2)
+		{
+			array[k] = right[j];
+			j++;
+			k++;
+		}
+			
+		free(temp1);
+		free(temp2);
 	}
 	//mergeInt
 	else if(key == 3 || key == 4 || key == 5 || key == 6 || key == 8 
 		|| key == 9 || key == 13 || key == 14 || key == 16 || key == 19 ||
 		      key == 23 || key == 24 || key == 25 || key == 28 )
 	{
-		mergeString(left,right,key,i,j,k,m1,m2);
+		//mergeString(left,right,key,i,j,k,m1,m2);
+		int *temp1 = malloc(20*sizeof(char));
+                int *temp2 = malloc(20*sizeof(char));
+                while(i<m1 && j<m2)
+                {
+                        temp1 = getInt(i);
+                        temp2 = getInt(j);
+                        if(temp1 <= temp2)
+                        {
+                                array[k] = left[i];
+                                i++;
+                        }
+                        else
+                        {
+                                array[k] = right[j];
+                                j++;
+                        }
+                        k++;
+                }       
+
+                while(i<m1)
+                {
+                        array[k] = left[i];
+                        i++;
+                        k++;
+                }
+                while(j<m2)
+                {
+                        array[k] = right[j];
+                        j++;
+                        k++;
+                }
+                 
+                free(temp1);
+                free(temp2);
+
 	}
 	//mergeFloat		
 	else if(key == 26 || key == 27)
 	{
-		mergeFloat(array,left,right,key,i,j,k,m1,m2);
+		//mergeFloat(array,left,right,key,i,j,k,m1,m2);
+		float *temp1 = malloc(20*sizeof(char));
+                float *temp2 = malloc(20*sizeof(char));
+                while(i<m1 && j<m2)
+                {
+                        temp1 = getFloat(i);
+                        temp2 = getFloat(j);
+                        if(temp1 <= temp2)
+                        {
+                                array[k] = left[i];
+                                i++;
+                        }
+                        else
+                        {
+                                array[k] = right[j];
+                                j++;
+                        }
+                        k++;
+                }
+
+                while(i<m1)
+                {
+                        array[k] = left[i];
+                        i++;
+                        k++;
+                }
+                while(j<m2)
+                {
+                        array[k] = right[j];
+                        j++;
+                        k++;
+                }
+
+                free(temp1);
+                free(temp2);
+
 	}
 	
 

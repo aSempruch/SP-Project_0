@@ -42,6 +42,6 @@ void mergeString(movie *array, movie *left, movie *right, int keyEle, int lI, in
 void mergeInt(movie *array, movie *left, movie *right, int keyEle, int lI, int mI, int rI, int size1, int size2);
 void merge(movie *array, int p, int q, int r, char *word);
 int getKey(char *word);
-void mergesort(char *array, int a, int b, char *word);
+void mergesort(movie *array, int a, int b, char *word);
 
 #endif
