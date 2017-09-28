@@ -293,5 +293,6 @@ int main(int argc, char* argv[])
 	//printf("Deallocating\n");
 	//deallocate(numOfEntries);
 	fclose(fp);
+	remove(".temp");
 	return 0;
 }
