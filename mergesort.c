@@ -22,6 +22,7 @@ void mergesort(movie **array, int a, int b, char *word)
 void print(movie **info, int numOfEntries){
 	int i;
 
+//NOTE: Need to input file to args in fprintf
 	for(i =0; i< numOfEntries; i++)
 	{
 		fprintf("%s, %s, %d, %d, %d, %d, %s, %d, %d, %s, %s, %s, %d, %d, %s, %d, %s, %s, %d, %s, %s, %s, %d, %d, %d, %3.1f, %4.2f, %d \n", 
