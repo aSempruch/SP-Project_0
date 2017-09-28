@@ -288,6 +288,10 @@ int main(int argc, char* argv[])
 		entry++;
 	}
 
+
+	mergesort(info, 0, numOfEntries,argv[1]);
+
+
 	//printf("Genres: '%s'\n", info[100]->genres);
 	printf("Num of entries: %d\n", numOfEntries);
 	//printf("Deallocating\n");

@@ -3,7 +3,7 @@
 #include <string.h>
 #include "sorter.h"
 
-void mergesort(movie *array, int a, int b, char *word)
+void mergesort(movie **array, int a, int b, char *word)
 {
 	//a(p) is left index, b(r) is right, m(q) is middle
 	char *key = word;
@@ -178,14 +178,14 @@ void mergeFloat(movie *array, movie *left, movie *right, int keyEle, int lI, int
 */
 
 
-void merge(movie *array, int p, int q, int r, char *word)
+void merge(movie **array, int p, int q, int r, char *word)
 {
 	int i,j,k;
 	char *keyWord = word;
 	int m1 = q-p+1, m2 = r-q;
 	
-	movie *left = (movie*)  malloc(sizeof(movie)*m1);
-	movie *right = (movie*) malloc(sizeof(movie)*m2);
+	movie **left = (movie**)  malloc(sizeof(movie)*m1);
+	movie **right = (movie**) malloc(sizeof(movie)*m2);
 
 	int key = getKey(keyWord);
 
@@ -248,12 +248,12 @@ void merge(movie *array, int p, int q, int r, char *word)
 		      key == 23 || key == 24 || key == 25 || key == 28 )
 	{
 		//mergeString(left,right,key,i,j,k,m1,m2);
-		int *temp1 = malloc(20*sizeof(char));
-                int *temp2 = malloc(20*sizeof(char));
+		int temp1;// = malloc(20*sizeof(char));
+                int temp2;// = malloc(20*sizeof(char));
                 while(i<m1 && j<m2)
                 {
-                        temp1 = getInt(i);
-                        temp2 = getInt(j);
+                        temp1 = *getInt(i);
+                        temp2 = *getInt(j);
                         if(temp1 <= temp2)
                         {
                                 array[k] = left[i];
@@ -280,8 +280,8 @@ void merge(movie *array, int p, int q, int r, char *word)
                         k++;
                 }
                  
-                free(temp1);
-                free(temp2);
+             //   free(temp1);
+             //   free(temp2);
 
 	}
 	//mergeFloat		
