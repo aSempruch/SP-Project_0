@@ -31,6 +31,7 @@ typedef struct movie_
 	float imdb_score;
 	float aspect_ratio;
 	int movie_facebook_likes;
+	struct movie_* next;
 }movie;
 
 char** getString(int element);

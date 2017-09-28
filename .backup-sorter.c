@@ -215,13 +215,15 @@ int main(int argc, char* argv[])
 		printf("ERROR00: Invalid number of inputs.\n");
 		return 0;
 	}
+	char *file = argv[1];
 	
 	/*		STEP 1
 	 *Note: 'info' will be the array the file will be written into.
 	 *Also the file pointer and opener will be innitalized here too. 
 	 */
 	FILE *fp = stdin;
-	
+	FILE *fp2 = stdin;
+		
 	/*if(!(fp = fopen(argv[1],"r")))
 	{
 		printf("ERROR01: Invalid or empty file. Try again.\n");
