@@ -208,11 +208,12 @@ void merge(movie *array, int p, int q, int r, char *word)
 		//mergeString(left, right, key, i,j,k, m1,m2);
 		char *temp1 = malloc(50*sizeof(char));
 		char *temp2 = malloc(50*sizeof(char));
+		
 		while(i<m1 && j<m2)
 		{
-			temp1 = getString(i);
-			temp2 = getString(j);
-			if(strcmp(temp1, temp2) < 0 || strcmp(temp1,temp2) = 0)
+			temp1 = (char*) getString(i);
+			temp2 = (char*) getString(j);
+			if(strcmp(temp1, temp2) < 0 || strcmp(temp1,temp2) == 0)
 			{
 				array[k] = left[i];
 				i++;
