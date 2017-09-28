@@ -138,16 +138,30 @@ void insert(char* line){
 		if(element==1||element==2||element==7||element==10||element==11||element==12||element==15||element==17||element==18||element==20||element==21||element==22){
 			char** val = getString(element);
 			//printf("Before: Val->%p | Struct->%p\n", *val, *getString(element));
-			int position = 0;
-			while(line[k] != ','){
-				*val = (char *)realloc(*val,position+2);
-				strncat(*val, &line[k], 1);
-				position++;
+			int position = 0, par = 0, print;
+			while(line[k] != ',' || par == 1){
+				print = 0;
+				if(line[k] == '"'){
+					//Quotations Detected
+					if(par == 0){
+						par = 1;
+						k++;
+					}else{
+						par = 0;
+						print = 1;
+					}
+				}
+				if(print == 0){
+					*val = (char *)realloc(*val,position+2);
+					strncat(*val, &line[k], 1);
+					position++;
+				}
 				k++;
 			}
 			//val[position] = '\0';
 			//printf("After: Val->%p | Struct->%p\n", *val, *getString(element));
-			printf("In Buffer: '%s' In Structure: '%s'\n", *val, *getString(element));
+			if(print == 1)
+				printf("In Buffer: |%s| In Structure: |%s|\n", *val, *getString(element));
 			//free(val);
 		}
 
@@ -165,7 +179,7 @@ void insert(char* line){
 				k++;
 			}
 			*val = atoi(temp);
-			printf("In Buffer: %d In Structure: %d\n", *val, *getInt(element));
+			//printf("In Buffer: %d In Structure: %d\n", *val, *getInt(element));
 			free(temp);
 		}
 
@@ -181,7 +195,7 @@ void insert(char* line){
 				k++;
 			}
 			*val = atof(temp);
-			printf("In Buffer: %f In Structure: %f\n", *val, *getFloat(element));
+			//printf("In Buffer: %f In Structure: %f\n", *val, *getFloat(element));
 			free(temp);
 		}
 	}
