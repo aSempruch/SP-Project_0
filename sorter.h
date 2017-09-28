@@ -28,8 +28,8 @@ typedef struct movie_
 	int budget;
 	int title_year;
 	int actor_2_facebook_likes;
-	float imdb_score;
-	float aspect_ratio;
+	float imdb_score;	//when printing %3.1f
+	float aspect_ratio;	//when printing %4.2f
 	int movie_facebook_likes;
 	struct movie_* next;
 }movie;
@@ -44,5 +44,6 @@ void mergeInt(movie *array, movie *left, movie *right, int keyEle, int lI, int m
 void merge(movie **array, int p, int q, int r, char *word);
 int getKey(char *word);
 void mergesort(movie **array, int a, int b, char *word);
+void print(movie **info, int numOfEntries);
 
 #endif
