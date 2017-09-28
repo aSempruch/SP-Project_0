@@ -209,7 +209,9 @@ FILE* stdinToFile(){
 		fputs(stream, fp);
 		printf("Reading line: %s\n", stream);
 	}
-	rewind(fp);
+	//rewind(fp);
+	fclose(fp);
+	fp = fopen(".temp", "r");
 	return fp;
 }
 
