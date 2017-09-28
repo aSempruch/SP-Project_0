@@ -77,7 +77,7 @@ char** getString(int element){
 		case 22:
 			return &info[entry]->content_rating;
 	}
-	printf("Returning Null\n");
+	//printf("Returning Null\n");
 	return NULL;
 }
 
@@ -161,7 +161,7 @@ void insert(char* line){
 			//val[position] = '\0';
 			//printf("After: Val->%p | Struct->%p\n", *val, *getString(element));
 			//if(print == 1)
-				printf("In Buffer: |%s| In Structure: |%s|\n", *val, *getString(element));
+				//printf("In Buffer: |%s| In Structure: |%s|\n", *val, *getString(element));
 			//free(val);
 		}
 
@@ -207,7 +207,7 @@ FILE* stdinToFile(){
 	while(!feof(stdin)){
 		fgets(stream,sizeof(stream),stdin);
 		fputs(stream, fp);
-		printf("Reading line: %s\n", stream);
+		//printf("Reading line: %s\n", stream);
 	}
 	//rewind(fp);
 	fclose(fp);
@@ -280,7 +280,7 @@ int main(int argc, char* argv[])
 	while(!feof(fp))
 	{	
 		fgets(stream,sizeof(stream),fp);
-		printf("Stream --> %s\n", stream);
+		//printf("Stream --> %s\n", stream);
 		if(k != 0)
 			insert(stream);
 		else
@@ -290,10 +290,11 @@ int main(int argc, char* argv[])
 
 
 	mergesort(info, 0, numOfEntries,argv[1]);
+	print(info, numOfEntries);
 
 
 	//printf("Genres: '%s'\n", info[100]->genres);
-	printf("Num of entries: %d\n", numOfEntries);
+	//printf("Num of entries: %d\n", numOfEntries);
 	//printf("Deallocating\n");
 	//deallocate(numOfEntries);
 	fclose(fp);
