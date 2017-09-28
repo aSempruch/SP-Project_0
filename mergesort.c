@@ -212,7 +212,7 @@ void merge(movie *array, int p, int q, int r, char *word)
 		{
 			temp1 = getString(i);
 			temp2 = getString(j);
-			if(strcmp(temp1, temp2) < 0)
+			if(strcmp(temp1, temp2) < 0 || strcmp(temp1,temp2) = 0)
 			{
 				array[k] = left[i];
 				i++;
