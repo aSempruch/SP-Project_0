@@ -202,7 +202,16 @@ void insert(char* line){
 }	
 
 
-
+FILE* stdinToFile(){
+	FILE *fp = fopen(".temp", "w");
+	while(!feof(stdin)){
+		fgets(stream,sizeof(stream),stdin);
+		fputs(stream, fp);
+		printf("Reading line: %s\n", stream);
+	}
+	rewind(fp);
+	return fp;
+}
 
 
 
@@ -215,12 +224,12 @@ int main(int argc, char* argv[])
 		printf("ERROR00: Invalid number of inputs.\n");
 		return 0;
 	}
+	//char *file = argv[1];
 	
 	/*		STEP 1
 	 *Note: 'info' will be the array the file will be written into.
 	 *Also the file pointer and opener will be innitalized here too. 
 	 */
-	FILE *fp = stdin;
 	
 	/*if(!(fp = fopen(argv[1],"r")))
 	{
@@ -239,9 +248,11 @@ int main(int argc, char* argv[])
 	  */
 	int numOfEntries = 0, numOfColumns = 1;
 	int buff;
-	while(!feof(fp2))
+	FILE* fp = stdinToFile();
+	//NOTE: Found out why its freezing
+	while(!feof(fp))
 	{
-		buff = (char)fgetc(fp2);
+		buff = (char)fgetc(fp);
 		if(numOfEntries == 0){
 			if(buff == ',')
 				numOfColumns++;
@@ -250,7 +261,7 @@ int main(int argc, char* argv[])
 			numOfEntries++;
 	}
 
-	//rewind(fp);
+	rewind(fp);
 
 
 
