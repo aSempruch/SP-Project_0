@@ -6,14 +6,10 @@
 void mergesort(movie **array, int a, int b, char *word)
 {
 
-//printf("Enterred mergesort Function.\n");
 	//a(p) is left index, b(r) is right, m(q) is middle
 
 	char *key = word;
 	int l = a, r =b, m;
-
-//printf("a--> %d, b-->%d\n", a,b);
-
 
 	if(l<r)
 	{
@@ -271,7 +267,6 @@ void mergeFloat(movie *array, movie *left, movie *right, int keyEle, int lI, int
 
 */
 
-
 void printArr(movie **array, int size)
 {
 	int i;
@@ -291,14 +286,10 @@ void merge(movie **array, int p, int q, int r, char *word)
 
 	int i,j,k;
 	char *keyWord = word;
-	int m1 = q-p+1, m2 = r-q;
+	int m1 = q-p+1, m2 = r-q;	
 
 
-//printf("m1--> %d\n", m1);
-//printf("m2--> %d\n", m2); 	
-
-
-	movie **left =   malloc(sizeof(movie)*m1);
+	movie **left =    malloc(sizeof(movie)*m1);
 	movie **right =   malloc(sizeof(movie)*m2);
 	int key = getKey(keyWord);
 
@@ -333,7 +324,6 @@ void merge(movie **array, int p, int q, int r, char *word)
 	   || key == 12 || key == 15 || key == 17 || key == 18 || key == 20 || 
 		 key == 21 || key == 22)
 	{
-
 		//mergeString(left, right, key, i,j,k, m1,m2);
 		char *temp1;// =  malloc(75*sizeof(char));
 		char *temp2;// =  malloc(75*sizeof(char));
@@ -357,7 +347,6 @@ printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
 				j++;
 			}
 			k++;
-printf("i %d  j %d  k %d\n", i,j,k);
 		}  	
 		
 		while(i<m1)
@@ -400,7 +389,7 @@ printf("i %d  j %d  k %d\n", i,j,k);
 
 printf("temp1-----> %ld     temp2-----> %ld\n",temp1 , temp2);
 
-                        if(temp1 <= temp2)
+                        if(temp1 < temp2)
                         {
 			
                                array[k] = left[i];
