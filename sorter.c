@@ -289,7 +289,7 @@ int main(int argc, char* argv[])
 	}
 
 
-	mergesort(info, 0, numOfEntries,argv[1]);
+	mergesort(info, 0, numOfEntries-1,argv[1]);
 	print(info, numOfEntries);
 
 
