@@ -27,25 +27,7 @@ printf("a--> %d, b-->%d\n", a,b);
 
 
 void print(movie **info, int numOfEntries){
-<<<<<<< HEAD
-printf("Printing sorted array: \n");
 
-	int i;
-	for(i =0; i< numOfEntries; i++)
-	{
-		printf("%s,%s,%d,%d,%d,%d,%s,%d,%d,%s,%s,%s,%d,%d,%s,%d,%s,%s,%d,%s,%s,%s,%d,%d,%d,%3.1f,%4.2f,%d\n", 
-			info[i]->color, info[i]->director_name, info[i]->num_critic_reviews,
-			info[i]->duration, info[i]->director_facebook_likes,
-			info[i]->actor_3_facebook_likes, info[i]->actor_2_name,
-			info[i]->actor_1_facebook_likes, info[i]->gross, info[i]->genres, info[i]->actor_1_name, info[i]->movie_title,
-			info[i]->num_voted_users, info[i]->cast_total_facebook_likes,info[i]->actor_3_name, info[i]->facenumber_in_poster,
-			info[i]->plot_keywords, info[i]->movie_imdb_link,
-			info[i]->num_user_for_reviews, info[i]->language,
-			info[i]->country, info[i]->content_rating, info[i]->budget,
-			info[i]->title_year, info[i]->actor_2_facebook_likes,
-			info[i]->imdb_score, info[i]->aspect_ratio, 
-			info[i]->movie_facebook_likes );
-=======
 	int i;
 	printf("color,director_name,num_critic_for_reviews,duration,director_facebook_likes,actor_3_facebook_likes,actor_2_name,actor_1_facebook_likes,gross,genres,actor_1_name,movie_title,num_voted_users,cast_total_facebook_likes,actor_3_name,facenumber_in_poster,plot_keywords,movie_imdb_link,num_user_for_reviews,language,country,content_rating,budget,title_year,actor_2_facebook_likes,imdb_score,aspect_ratio,movie_facebook_likes\n");
 //NOTE: Need to input file to args in fprintf
