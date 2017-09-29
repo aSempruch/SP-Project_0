@@ -113,7 +113,7 @@ void print(movie **info, int numOfEntries){
 int getKey(char *key)
 {
 
-printf("Key sorted by ----> %s.\n", key);
+//printf("Key sorted by ----> %s.\n", key);
 	char *var = key;
 	if(strcmp(var, "Color") == 0)
 		return  1;
@@ -287,29 +287,31 @@ printf("m1--> %d\n", m1);
 printf("m2--> %d\n", m2); 	
 
 
-	movie **left = (movie**)  malloc(sizeof(movie)*m1);
-	movie **right = (movie**) malloc(sizeof(movie)*m2);
-
-
+	movie **left =   malloc(sizeof(movie)*m1);
+	movie **right =   malloc(sizeof(movie)*m2);
 	int key = getKey(keyWord);
+
+
 
 
 	for(i=0; i<m1; i++)
 	{
-	//printf("for loop #1\n");
-		memcpy(left[i], array[p+i], sizeof(movie) * sizeof(left[i]));
-		//left[i] = array[p+i];
+
+		left[i] = array[p+i];
+//printf("i---> %d\n", i);
+
 	}
 	for(j=0; j<m2;j++)
 	{
-	//printf("for loop #s\n");
-		memcpy(right[j],array[q+j+1], sizeof(movie)*sizeof(right[q+j+1]));
-		//right[j] = array[q+j+1];
+
+		right[j] = array[q+j+1];
+//printf("j---> %d\n", j);
+
 	}
 
-	i=0, j=0,k=p;
+	i=0, j=0, k=p;
 
-
+printf("%d %d %d\n", i,j,k); 
 
 
 
@@ -321,16 +323,19 @@ printf("m2--> %d\n", m2);
 	   || key == 12 || key == 15 || key == 17 || key == 18 || key == 20 || 
 		 key == 21 || key == 22)
 	{
-printf("Sorting String. Keyword----> %s.\n", keyWord);
+
 		//mergeString(left, right, key, i,j,k, m1,m2);
-		char *temp1 = malloc(50*sizeof(char));
-		char *temp2 = malloc(50*sizeof(char));
+		char *temp1 =  malloc(50*sizeof(char));
+		char *temp2 =  malloc(50*sizeof(char));
 		
 		while(i<m1 && j<m2)
 		{
-			temp1 = (char*) getString(i);
-			temp2 = (char*) getString(j);
-printf("Grabbed strings from info array.\n");
+
+			temp1 =  (char *) getString(i);
+			temp2 =  (char *) getString(j);
+
+printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
+
 			if(strcmp(temp1, temp2) < 0 || strcmp(temp1,temp2) == 0)
 			{
 				array[k] = left[i];
@@ -363,29 +368,31 @@ printf("Grabbed strings from info array.\n");
 
 
 
-printf("Going into Int sorter\n");
+//printf("Going into Int sorter\n");
 	//mergeInt
 	if(key == 3 || key == 4 || key == 5 || key == 6 || key == 8 
-		|| key == 9 || key == 13 || key == 14 || key == 16 || key == 19 ||
+			|| key == 9 || key == 13 || key == 14 || key == 16 || key == 19 ||
 		      key == 23 || key == 24 || key == 25 || key == 28 )
 	{
 
-		printf("Sorting Int. Keyword----> %s.\n", keyWord);
+//		printf("Sorting Int. Keyword----> %s.\n", keyWord);
 		
-
 		//mergeString(left,right,key,i,j,k,m1,m2);
 		int temp1;// = malloc(20*sizeof(char));
                 int temp2;// = malloc(20*sizeof(char));
 
                 while(i<m1 && j<m2)
                 {
+
                         temp1 = *getInt(i);
                         temp2 = *getInt(j);
 
+printf("temp1-----> %d      temp2-----> %d\n", temp1,temp2);
+
                         if(temp1 <= temp2)
                         {
-				memcpy(array[k], left[i], sizeof(movie)* sizeof(array[k]));				
-                               // array[k] = left[i];
+				memcpy(array[k], left[i], sizeof(movie)* sizeof(array[k]));
+                              // array[k] = left[i];
                                 i++;
                         }
                         else
