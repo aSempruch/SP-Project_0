@@ -5,37 +5,37 @@ typedef struct movie_
 {
 	char *color;
 	char *director_name;
-	int num_critic_reviews;
-	int duration;
-	int director_facebook_likes;
-	int actor_3_facebook_likes;
+	long num_critic_reviews;
+	long duration;
+	long director_facebook_likes;
+	long actor_3_facebook_likes;
 	char *actor_2_name;
-	int actor_1_facebook_likes;
-	int gross;
+	long actor_1_facebook_likes;
+	long gross;
 	char *genres;
 	char *actor_1_name;
 	char *movie_title;
-	int num_voted_users;
-	int cast_total_facebook_likes;
+	long num_voted_users;
+	long cast_total_facebook_likes;
 	char *actor_3_name;
-	int facenumber_in_poster;
+	long facenumber_in_poster;
 	char *plot_keywords;
 	char *movie_imdb_link;
-	int num_user_for_reviews;
+	long num_user_for_reviews;
 	char *language;
 	char *country;
 	char *content_rating;
-	int budget;
-	int title_year;
-	int actor_2_facebook_likes;
+	long budget;
+	long title_year;
+	long actor_2_facebook_likes;
 	float imdb_score;	//when printing %3.1f
 	float aspect_ratio;	//when printing %4.2f
-	int movie_facebook_likes;
+	long movie_facebook_likes;
 	struct movie_* next;
 }movie;
 
 char** getString(int element);
-int* getInt(int element);
+long* getInt(int element);
 float* getFloat(int element);
 void insert(char* line);
 void mergeFloat(movie *array, movie *left, movie *right, int keyEle, int lI, int mI, int rI, int size1, int size2);

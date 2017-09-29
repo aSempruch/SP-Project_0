@@ -27,6 +27,7 @@ printf("a--> %d, b-->%d\n", a,b);
 
 
 void print(movie **info, int numOfEntries){
+<<<<<<< HEAD
 printf("Printing sorted array: \n");
 
 	int i;
@@ -44,6 +45,85 @@ printf("Printing sorted array: \n");
 			info[i]->title_year, info[i]->actor_2_facebook_likes,
 			info[i]->imdb_score, info[i]->aspect_ratio, 
 			info[i]->movie_facebook_likes );
+=======
+	int i;
+	printf("color,director_name,num_critic_for_reviews,duration,director_facebook_likes,actor_3_facebook_likes,actor_2_name,actor_1_facebook_likes,gross,genres,actor_1_name,movie_title,num_voted_users,cast_total_facebook_likes,actor_3_name,facenumber_in_poster,plot_keywords,movie_imdb_link,num_user_for_reviews,language,country,content_rating,budget,title_year,actor_2_facebook_likes,imdb_score,aspect_ratio,movie_facebook_likes\n");
+//NOTE: Need to input file to args in fprintf
+	for(i =0; i< numOfEntries-1; i++)
+	{	
+		printf("%s,%s,",info[i]->color, info[i]->director_name);
+		if(info[i]->num_critic_reviews != -888)
+				printf("%ld,",info[i]->num_critic_reviews);
+		else
+				printf(",");
+		if(info[i]->duration != -888)
+				printf("%ld,",info[i]->duration);
+		else
+				printf(",");
+		if(info[i]->director_facebook_likes != -888)
+				printf("%ld,",info[i]->director_facebook_likes);
+		else
+				printf(",");
+		if(info[i]->actor_3_facebook_likes != -888)
+				printf("%ld,",info[i]->actor_3_facebook_likes);
+		else
+				printf(",");
+		printf("%s,",info[i]->actor_2_name);
+		if(info[i]->actor_1_facebook_likes != -888)
+				printf("%ld,",info[i]->actor_1_facebook_likes);
+		else
+				printf(",");
+		if(info[i]->gross != -888)
+				printf("%ld,",info[i]->gross);
+		else
+				printf(",");
+		printf("%s,%s,%s,",info[i]->genres, info[i]->actor_1_name, info[i]->movie_title);
+		if(info[i]->num_voted_users != -888)
+				printf("%ld,",info[i]->num_voted_users);
+		else
+				printf(",");
+		if(info[i]->cast_total_facebook_likes != -888)
+				printf("%ld,",info[i]->cast_total_facebook_likes);
+		else
+				printf(",");
+		printf("%s,",info[i]->actor_3_name);
+		if(info[i]->facenumber_in_poster != -888)
+				printf("%ld,",info[i]->facenumber_in_poster);
+		else
+				printf(",");
+		printf("%s,%s,",info[i]->plot_keywords, info[i]->movie_imdb_link);
+		if(info[i]->num_user_for_reviews != -888)
+				printf("%ld,",info[i]->num_user_for_reviews);
+		else
+				printf(",");
+		printf("%s,%s,%s,",info[i]->language,info[i]->country, info[i]->content_rating);
+		if(info[i]->budget != -888)
+				printf("%ld,",info[i]->budget);
+		else
+				printf(",");
+		if(info[i]->title_year != -888)
+				printf("%ld,",info[i]->title_year);
+		else
+				printf(",");
+		if(info[i]->actor_2_facebook_likes != -888)
+				printf("%ld,",info[i]->actor_2_facebook_likes);
+		else
+				printf(",");
+		if((int)(info[i]->imdb_score)*10 >= 0)
+				printf("%3.1f,", info[i]->imdb_score);
+		else
+				printf(",");
+		if((int)(info[i]->aspect_ratio)*10 >= 0){
+				if(((int)(info[i]->aspect_ratio*100)%10) == 0)
+					printf("%3.1f,",info[i]->aspect_ratio);
+				else
+					printf("%4.2f,",info[i]->aspect_ratio);
+		}
+		else
+				printf(",");
+		printf("%ld\n",info[i]->movie_facebook_likes);
+
+>>>>>>> f9933e025fd9e3e9cb9d65ec6998a4ca5a9032b4
 	}
 }
 
