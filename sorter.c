@@ -82,6 +82,7 @@ char** getString(int entry, int element){
 }
 
 long* getInt(int entry, int element){
+printf("Getting int entry--> %d....element--> %d\n",entry, element);
 	switch(element){
 		case 3:
 			return &info[entry]->num_critic_reviews;

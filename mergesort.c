@@ -331,8 +331,8 @@ printf("%d %d %d\n", i,j,k);
 		while(i<m1 && j<m2)
 		{
 
-			temp1 =  (char *) getString(i);
-			temp2 =  (char *) getString(j);
+			temp1 =  (char *) getString(i,key);
+			temp2 =  (char *) getString(j,key);
 
 printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
 
@@ -378,27 +378,27 @@ printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
 //		printf("Sorting Int. Keyword----> %s.\n", keyWord);
 		
 		//mergeString(left,right,key,i,j,k,m1,m2);
-		int temp1;// = malloc(20*sizeof(char));
-                int temp2;// = malloc(20*sizeof(char));
+		long temp1;// = malloc(20*sizeof(char));
+                long temp2;// = malloc(20*sizeof(char));
 
                 while(i<m1 && j<m2)
                 {
 
-                        temp1 = *getInt(i);
-                        temp2 = *getInt(j);
+                        temp1 = *getInt(i, key);
+                        temp2 = *getInt(j, key);
 
-printf("temp1-----> %d      temp2-----> %d\n", temp1,temp2);
+printf("temp1-----> %ld      temp2-----> %ld\n", temp1,temp2);
 
                         if(temp1 <= temp2)
                         {
-				memcpy(array[k], left[i], sizeof(movie)* sizeof(array[k]));
-                              // array[k] = left[i];
+				//memcpy(array[k], left[i], sizeof(movie)* sizeof(array[k]));
+                               array[k] = left[i];
                                 i++;
                         }
                         else
                         {
-				memcpy(array[k],right[j], sizeof(movie)*sizeof(array[k]));
-                               // array[k] = right[j];
+				//memcpy(array[k],right[j], sizeof(movie)*sizeof(array[k]));
+                               array[k] = right[j];
                                 j++;
                         }
                         k++;
@@ -441,8 +441,8 @@ printf("Sorting Float. Keyword----> %s.\n", keyWord);
                 float temp2;// = malloc(20*sizeof(char));
                 while(i<m1 && j<m2)
                 {
-                        temp1 = *getFloat(i);
-                        temp2 = *getFloat(j);
+                        temp1 = *getFloat(i,key);
+                        temp2 = *getFloat(j,key);
                         if(temp1 <= temp2)
                         {
                                 array[k] = left[i];
