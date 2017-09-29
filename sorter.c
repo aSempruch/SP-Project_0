@@ -50,7 +50,7 @@ void deallocate(int rows){
 }
 
 //Returns a char pointer to the requested element in the struct
-char** getString(int element){
+char** getString(int entry, int element){
 	switch(element){
 		case 1:
 			return &info[entry]->color;
@@ -81,7 +81,7 @@ char** getString(int element){
 	return NULL;
 }
 
-long* getInt(int element){
+long* getInt(int entry, int element){
 	switch(element){
 		case 3:
 			return &info[entry]->num_critic_reviews;
@@ -115,7 +115,7 @@ long* getInt(int element){
 	return NULL;
 }
 
-float* getFloat(int element){
+float* getFloat(int entry, int element){
 	switch(element){
 		case 26:
 			return &info[entry]->imdb_score;
@@ -135,7 +135,7 @@ void insert(char* line){
 		element++;
 		//String type handling
 		if(element==1||element==2||element==7||element==10||element==11||element==12||element==15||element==17||element==18||element==20||element==21||element==22){
-			char** val = getString(element);
+			char** val = getString(entry,element);
 			//printf("Before: Val->%p | Struct->%p\n", *val, *getString(element));
 			int position = 0, par = 0;// print;
 			while(line[k] != ',' || par == 1){
@@ -169,7 +169,7 @@ void insert(char* line){
 		if(element==3||element==4||element==5||element==6||element==8||element==9||element==13||element==14||element==16||element==19||element==23||element==24||element==25||element==28){
 			//int init;
 			//int* val = &init;
-			long* val = getInt(element);
+			long* val = getInt(entry,element);
 			char* temp = malloc(sizeof(char)*128);
 			int position = 0;
 			while(line[k] != ',' && line[k] != '\n' && line[k] != '\0'){
@@ -189,7 +189,7 @@ void insert(char* line){
 
 		//Float type handling
 		if(element==26||element==27){
-			float* val = getFloat(element);
+			float* val = getFloat(entry,element);
 			char* temp = malloc(sizeof(char)*128);
 			int position = 0;
 			while(line[k] != ','){
