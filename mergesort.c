@@ -12,7 +12,7 @@ void mergesort(movie **array, int a, int b, char *word)
 	char *key = word;
 	int l = a, r =b, m;
 
-printf("a--> %d, b-->%d\n", a,b);
+//printf("a--> %d, b-->%d\n", a,b);
 
 
 	if(l<r)
@@ -119,7 +119,7 @@ int getKey(char *key)
 		return  1;
 	if(strcmp(var, "director_name") == 0)
 		return 2;
-	if(strcmp(var, "num_critic_reviews") == 0)
+	if(strcmp(var, "num_critic_for_reviews") == 0)
 		return 3;
 	if(strcmp(var, "duration") == 0)
 		return 4;
@@ -272,6 +272,17 @@ void mergeFloat(movie *array, movie *left, movie *right, int keyEle, int lI, int
 */
 
 
+void printArr(movie **array, int size)
+{
+	int i;
+	for(i=0; i<size; i++)
+	{
+		printf("| %ld |", array[i]->movie_facebook_likes); 
+	}
+	printf("\n");
+}
+
+
 void merge(movie **array, int p, int q, int r, char *word)
 {
 //p(l), q(m), r(r)
@@ -283,8 +294,8 @@ void merge(movie **array, int p, int q, int r, char *word)
 	int m1 = q-p+1, m2 = r-q;
 
 
-printf("m1--> %d\n", m1);
-printf("m2--> %d\n", m2); 	
+//printf("m1--> %d\n", m1);
+//printf("m2--> %d\n", m2); 	
 
 
 	movie **left =   malloc(sizeof(movie)*m1);
@@ -298,21 +309,20 @@ printf("m2--> %d\n", m2);
 	{
 
 		left[i] = array[p+i];
-//printf("i---> %d\n", i);
 
 	}
 	for(j=0; j<m2;j++)
 	{
 
 		right[j] = array[q+j+1];
-//printf("j---> %d\n", j);
 
 	}
 
-	i=0, j=0, k=p;
+	i=0;
+	j=0;
+	k=p;
 
-printf("%d %d %d\n", i,j,k); 
-
+//printf("%d %d %d\n", i,j,k); 
 
 
 
@@ -325,18 +335,18 @@ printf("%d %d %d\n", i,j,k);
 	{
 
 		//mergeString(left, right, key, i,j,k, m1,m2);
-		char *temp1 =  malloc(50*sizeof(char));
-		char *temp2 =  malloc(50*sizeof(char));
+		char *temp1;// =  malloc(75*sizeof(char));
+		char *temp2;// =  malloc(75*sizeof(char));
 		
 		while(i<m1 && j<m2)
 		{
 
-			temp1 =  (char *) getString(i,key);
-			temp2 =  (char *) getString(j,key);
+			temp1 =  *getString(left,i,key);
+			temp2 =  *getString(right,j,key);
 
 printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
 
-			if(strcmp(temp1, temp2) < 0 || strcmp(temp1,temp2) == 0)
+			if(strcmp(temp1, temp2) <= 0 )
 			{
 				array[k] = left[i];
 				i++;
@@ -347,6 +357,7 @@ printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
 				j++;
 			}
 			k++;
+printf("i %d  j %d  k %d\n", i,j,k);
 		}  	
 		
 		while(i<m1)
@@ -362,8 +373,8 @@ printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
 			k++;
 		}
 			
-		free(temp1);
-		free(temp2);
+		//free(temp1);
+		//free(temp2);
 	}
 
 
@@ -375,32 +386,36 @@ printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
 		      key == 23 || key == 24 || key == 25 || key == 28 )
 	{
 
-//		printf("Sorting Int. Keyword----> %s.\n", keyWord);
 		
 		//mergeString(left,right,key,i,j,k,m1,m2);
 		long temp1;// = malloc(20*sizeof(char));
-                long temp2;// = malloc(20*sizeof(char));
+               	long temp2;// = malloc(20*sizeof(char));
+                
 
-                while(i<m1 && j<m2)
+		while(i<m1 && j<m2)
                 {
 
-                        temp1 = *getInt(i, key);
-                        temp2 = *getInt(j, key);
+                        temp1 = *getInt(left,i, key);
+                        temp2 = *getInt(right, j, key);
 
-printf("temp1-----> %ld      temp2-----> %ld\n", temp1,temp2);
+printf("temp1-----> %ld     temp2-----> %ld\n",temp1 , temp2);
 
                         if(temp1 <= temp2)
                         {
-				//memcpy(array[k], left[i], sizeof(movie)* sizeof(array[k]));
+			
                                array[k] = left[i];
                                 i++;
                         }
                         else
                         {
-				//memcpy(array[k],right[j], sizeof(movie)*sizeof(array[k]));
                                array[k] = right[j];
                                 j++;
                         }
+			printf("Left ");
+			printArr(left, m1);
+			printf("Right");
+			printArr(right,m2);
+			printf("\n");
                         k++;
                 }       
 
@@ -408,8 +423,8 @@ printf("temp1-----> %ld      temp2-----> %ld\n", temp1,temp2);
 
                 while(i<m1)
                 {
-			memcpy(array[k],left[i],sizeof(movie)*sizeof(array[k]));
-                       // array[k] = left[i];
+
+                        array[k] = left[i];
                         i++;
                         k++;
                 }
@@ -417,8 +432,7 @@ printf("temp1-----> %ld      temp2-----> %ld\n", temp1,temp2);
 
                 while(j<m2)
                 {
-			memcpy(array[k],right[j], sizeof(movie)*sizeof(array[k]));
-                       // array[k] = right[j];
+			array[k] = right[j];
                         j++;
                         k++;
                 }
@@ -435,22 +449,22 @@ printf("temp1-----> %ld      temp2-----> %ld\n", temp1,temp2);
 	if(key == 26 || key == 27)
 	{
 
-printf("Sorting Float. Keyword----> %s.\n", keyWord);
+//printf("Sorting Float. Keyword----> %s.\n", keyWord);
 		//mergeFloat(array,left,right,key,i,j,k,m1,m2);
 		float temp1;// = malloc(20*sizeof(char));
                 float temp2;// = malloc(20*sizeof(char));
                 while(i<m1 && j<m2)
                 {
-                        temp1 = *getFloat(i,key);
-                        temp2 = *getFloat(j,key);
+                        temp1 = *getFloat(left,i,key);
+                        temp2 = *getFloat(right,j,key);
                         if(temp1 <= temp2)
                         {
-                                array[k] = left[i];
+                               array[k] = left[i];
                                 i++;
                         }
                         else
                         {
-                                array[k] = right[j];
+			        array[k] = right[j];
                                 j++;
                         }
                         k++;
@@ -464,7 +478,8 @@ printf("Sorting Float. Keyword----> %s.\n", keyWord);
                 }
                 while(j<m2)
                 {
-                        array[k] = right[j];
+
+			array[k] = right[j];
                         j++;
                         k++;
                 }

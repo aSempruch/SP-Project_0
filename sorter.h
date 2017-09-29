@@ -34,9 +34,9 @@ typedef struct movie_
 	struct movie_* next;
 }movie;
 
-char** getString(int entry,int element);
-long* getInt(int entry,int element);
-float* getFloat(int entry,int element);
+char** getString(movie** info,int entry,int element);
+long* getInt(movie** info,int entry,int element);
+float* getFloat(movie** info,int entry,int element);
 void insert(char* line);
 void mergeFloat(movie *array, movie *left, movie *right, int keyEle, int lI, int mI, int rI, int size1, int size2);
 void mergeString(movie *array, movie *left, movie *right, int keyEle, int lI, int mI, int rI, int size1, int size2);
