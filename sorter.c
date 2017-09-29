@@ -81,7 +81,7 @@ char** getString(int element){
 	return NULL;
 }
 
-int* getInt(int element){
+long* getInt(int element){
 	switch(element){
 		case 3:
 			return &info[entry]->num_critic_reviews;
@@ -97,7 +97,6 @@ int* getInt(int element){
 			return &info[entry]->gross;
 		case 13:
 			return &info[entry]->num_voted_users;
-			//Dynamically allocate string size
 		case 14:
 			return &info[entry]->cast_total_facebook_likes;
 		case 16:
@@ -138,27 +137,27 @@ void insert(char* line){
 		if(element==1||element==2||element==7||element==10||element==11||element==12||element==15||element==17||element==18||element==20||element==21||element==22){
 			char** val = getString(element);
 			//printf("Before: Val->%p | Struct->%p\n", *val, *getString(element));
-			int position = 0, par = 0, print;
+			int position = 0, par = 0;// print;
 			while(line[k] != ',' || par == 1){
-				print = 0;
+				//printf("Entering string reader for element %d\n", element);
+				//print = 0;
 				if(line[k] == '"'){
 					//Quotations Detected
-					if(par == 0){
+					if(par == 0)
 						par = 1;
-						k++;
-					}else{
+					else{
 						par = 0;
-						print = 1;
+						//print = 1;
 					}
 				}
-				if(print == 0){
+				//if(print == 0){
 					*val = (char *)realloc(*val,position+2);
 					strncat(*val, &line[k], 1);
 					position++;
-				}
+				//}
 				k++;
 			}
-			//val[position] = '\0';
+			//*val[position] = '\0';
 			//printf("After: Val->%p | Struct->%p\n", *val, *getString(element));
 			//if(print == 1)
 				//printf("In Buffer: |%s| In Structure: |%s|\n", *val, *getString(element));
@@ -170,7 +169,7 @@ void insert(char* line){
 		if(element==3||element==4||element==5||element==6||element==8||element==9||element==13||element==14||element==16||element==19||element==23||element==24||element==25||element==28){
 			//int init;
 			//int* val = &init;
-			int* val = getInt(element);
+			long* val = getInt(element);
 			char* temp = malloc(sizeof(char)*128);
 			int position = 0;
 			while(line[k] != ',' && line[k] != '\n' && line[k] != '\0'){
@@ -178,8 +177,12 @@ void insert(char* line){
 				position++;
 				k++;
 			}
-			*val = atoi(temp);
+			if(temp[0] != '\0')
+				*val = atol(temp);
+			else
+				*val = -888;
 			//printf("In Buffer: %d In Structure: %d\n", *val, *getInt(element));
+			temp = NULL;
 			free(temp);
 		}
 
@@ -194,7 +197,11 @@ void insert(char* line){
 				position++;
 				k++;
 			}
-			*val = atof(temp);
+			if(temp[0] != '\0')
+				*val = atof(temp);
+			else
+				*val = -888;
+			temp = NULL;
 			//printf("In Buffer: %f In Structure: %f\n", *val, *getFloat(element));
 			free(temp);
 		}
@@ -289,7 +296,7 @@ int main(int argc, char* argv[])
 	}
 
 
-	mergesort(info, 0, numOfEntries,argv[1]);
+	//mergesort(info, 0, numOfEntries,argv[1]);
 	print(info, numOfEntries);
 
 
