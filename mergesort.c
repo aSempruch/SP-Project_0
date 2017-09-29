@@ -105,7 +105,7 @@ void print(movie **info, int numOfEntries){
 				printf(",");
 		printf("%ld\n",info[i]->movie_facebook_likes);
 
->>>>>>> f9933e025fd9e3e9cb9d65ec6998a4ca5a9032b4
+
 	}
 }
 
