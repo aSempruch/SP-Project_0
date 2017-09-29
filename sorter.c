@@ -296,11 +296,9 @@ int main(int argc, char* argv[])
 	}
 
 
-<<<<<<< HEAD
 	mergesort(info, 0, numOfEntries-1,argv[1]);
-=======
+
 	//mergesort(info, 0, numOfEntries,argv[1]);
->>>>>>> f9933e025fd9e3e9cb9d65ec6998a4ca5a9032b4
 	print(info, numOfEntries);
 
 
