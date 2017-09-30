@@ -3,22 +3,24 @@
 #include <string.h>
 #include "sorter.h"
 
-void mergesort(movie **array, int a, int b, char *word)
+void mergesort(movie **array, int l, int r, char *word)
 {
 
 	//a(p) is left index, b(r) is right, m(q) is middle
 
 	char *key = word;
-	int l = a, r =b, m;
+	int m = (l+r)/2;
 
 	if(l<r)
 	{
-		m = (l+r)/2;
+//		m = (l+r)/2;
 		mergesort(array,l,m, key);
 		mergesort(array,m+1, r, key);
-		merge(array, l, m, r, key);
+		merge(array, l, m, m+1, key);
 	}
 }
+
+
 
 
 
@@ -299,12 +301,14 @@ void merge(movie **array, int p, int q, int r, char *word)
 	for(i=0; i<m1; i++)
 	{
 
+		printf("p: %d .....i: %d.......m1:%d \n", p,i,m1);
 		left[i] = array[p+i];
 
 	}
 	for(j=0; j<m2;j++)
 	{
 
+		printf("q: %d......j: %d.......m2: %d \n", q,j,m2);
 		right[j] = array[q+j+1];
 
 	}
@@ -325,8 +329,8 @@ void merge(movie **array, int p, int q, int r, char *word)
 		 key == 21 || key == 22)
 	{
 		//mergeString(left, right, key, i,j,k, m1,m2);
-		char *temp1;// =  malloc(75*sizeof(char));
-		char *temp2;// =  malloc(75*sizeof(char));
+		char *temp1;
+		char *temp2;
 		
 		while(i<m1 && j<m2)
 		{
@@ -362,8 +366,7 @@ printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
 			k++;
 		}
 			
-		//free(temp1);
-		//free(temp2);
+		
 	}
 
 
@@ -387,19 +390,19 @@ printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
                         temp1 = *getInt(left,i, key);
                         temp2 = *getInt(right, j, key);
 
-printf("temp1-----> %ld     temp2-----> %ld\n",temp1 , temp2);
+//printf("temp1-----> %ld     temp2-----> %ld\n",temp1 , temp2);
 
-                        if(temp1 < temp2)
-                        {
-			
+                        if(temp1 <= temp2)
+                        {	
                                array[k] = left[i];
-                                i++;
+                               i++;
                         }
                         else
                         {
                                array[k] = right[j];
                                 j++;
                         }
+printf("temp1-----> %ld     temp2-----> %ld\n",temp1 , temp2);
 			printf("Left ");
 			printArr(left, m1);
 			printf("Right");
