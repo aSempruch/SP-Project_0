@@ -16,7 +16,7 @@ void mergesort(movie **array, int l, int r, char *word)
 //		m = (l+r)/2;
 		mergesort(array,l,m, key);
 		mergesort(array,m+1, r, key);
-		merge(array, l, m, m+1, key);
+		merge(array, l, m, r, key);
 	}
 }
 
@@ -301,14 +301,14 @@ void merge(movie **array, int p, int q, int r, char *word)
 	for(i=0; i<m1; i++)
 	{
 
-		printf("p: %d .....i: %d.......m1:%d \n", p,i,m1);
+		//printf("p: %d .....i: %d.......m1:%d \n", p,i,m1);
 		left[i] = array[p+i];
 
 	}
 	for(j=0; j<m2;j++)
 	{
 
-		printf("q: %d......j: %d.......m2: %d \n", q,j,m2);
+		//printf("q: %d......j: %d.......m2: %d \n", q,j,m2);
 		right[j] = array[q+j+1];
 
 	}
@@ -338,7 +338,7 @@ void merge(movie **array, int p, int q, int r, char *word)
 			temp1 =  *getString(left,i,key);
 			temp2 =  *getString(right,j,key);
 
-printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
+//printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
 
 			if(strcmp(temp1, temp2) <= 0 )
 			{
@@ -402,12 +402,12 @@ printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
                                array[k] = right[j];
                                 j++;
                         }
-printf("temp1-----> %ld     temp2-----> %ld\n",temp1 , temp2);
+/*printf("temp1-----> %ld     temp2-----> %ld\n",temp1 , temp2);
 			printf("Left ");
 			printArr(left, m1);
 			printf("Right");
 			printArr(right,m2);
-			printf("\n");
+			printf("\n");*/
                         k++;
                 }       
 
