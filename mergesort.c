@@ -171,7 +171,7 @@ int getKey(char *key)
                 return 28;
 	else
 	{
-		return 0;
+		return 30;
 	}
 
 }
