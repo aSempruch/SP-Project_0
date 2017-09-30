@@ -152,9 +152,9 @@ void insert(char* line){
 					}
 				}
 				//if(print == 0){
-					*val = (char *)realloc(*val,position+2);
-					strncat(*val, &line[k], 1);
-					position++;
+				*val = (char *)realloc(*val,position+2);
+				strncat(*val, &line[k], 1);
+				position++;
 				//}
 				k++;
 			}
