@@ -9,17 +9,16 @@ void mergesort(movie **array, int l, int r, char *word)
 	//a(p) is left index, b(r) is right, m(q) is middle
 
 	char *key = word;
-	int m = (l+r)/2;
 
 	if(l<r)
 	{
-//		m = (l+r)/2;
+		int m = (l+r)/2;
 		mergesort(array,l,m, key);
 		mergesort(array,m+1, r, key);
 		merge(array, l, m, r, key);
 	}
-}
 
+}
 
 
 
@@ -183,13 +182,13 @@ void printArr(movie **array, int size)
 	int i;
 	for(i=0; i<size; i++)
 	{
-		printf("| %ld |", array[i]->movie_facebook_likes); 
+		printf("| %s |", array[i]->director_name); 
 	}
 	printf("\n");
 }
 
 
-void merge(movie **array, int p, int q, int r, char *word)
+void merge(movie **array, int l, int m, int r, char *word)
 {
 //p(l), q(m), r(r)
 
@@ -197,34 +196,38 @@ void merge(movie **array, int p, int q, int r, char *word)
 
 	int i,j,k;
 	char *keyWord = word;
-	int m1 = q-p+1, m2 = r-q;	
+	int m1 = m-l+1, m2 = r-m;	
 
 
 	movie **left =    malloc(sizeof(movie)*m1);
 	movie **right =   malloc(sizeof(movie)*m2);
+
 	int key = getKey(keyWord);
-
-
-
 
 	for(i=0; i<m1; i++)
 	{
-
-		//printf("p: %d .....i: %d.......m1:%d \n", p,i,m1);
-		left[i] = array[p+i];
-
+		left[i] = array[l+i];
 	}
+
+	printf("Left Array: ");
+	printArr(left,m1);
+
 	for(j=0; j<m2;j++)
 	{
-
 		//printf("q: %d......j: %d.......m2: %d \n", q,j,m2);
-		right[j] = array[q+j+1];
+		right[j] = array[m+j+1];
 
 	}
+	printf("Right Array: ");
+	printArr(right,m2);
+
+
+
+	printf("\n");
 
 	i=0;
 	j=0;
-	k=p;
+	k=l;
 
 //printf("%d %d %d\n", i,j,k); 
 
