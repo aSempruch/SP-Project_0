@@ -139,37 +139,28 @@ void insert(char* line){
 		//String type handling
 		if(element==1||element==2||element==7||element==10||element==11||element==12||element==15||element==17||element==18||element==20||element==21||element==22){
 			char** val = getString(info,entry,element);
-			//printf("Before: Val->%p | Struct->%p\n", *val, *getString(element));
 			int position = 0, par = 0, space = 0;// print;
 			while(line[k] != ',' || par == 1){
-				//print = 0;
 				if(line[k] == '"'){
 					//Quotations Detected
 					if(par == 0)
 						par = 1;
-					else{
+					else
 						par = 0;
-						//print = 1;
-					}
 				}
-				//if(print == 0){
-				if((line[k] == ' ' || isprint(line[k]) == 0) && par == 0){
+				if(line[k] == ' ' || isprint(line[k]) == 0 || line[k]== '"')
 						space++;
-						//if(element == 12)
-						//	printf("Detecting between %c %c %c\n", line[k-1], line[k],line[k+1]);
-				}
 				else{
-						//if(element == 12)
-								//printf("Spaces: %d Current char: %c\n", space, line[k]);
 						*val = (char *)realloc(*val,position+2);
 						strncat(*val, &line[k-space], 1+space);
-						//int t;
-						//if(element == 12)
-						//for(t = k-space; t < k+space; t++)
-						//		printf("Adding: %c\n", line[t]);
 						space = 0;
 				}
-				//}
+				if(line[k] == '"' && par == 0){
+						position++;
+						*val = (char *)realloc(*val,position+2);
+						char quote = '"';
+						strncat(*val, &quote, 1);
+				}
 				position++;
 				k++;
 			}
@@ -194,8 +185,6 @@ void insert(char* line){
 
 		//Int type handling
 		if(element==3||element==4||element==5||element==6||element==8||element==9||element==13||element==14||element==16||element==19||element==23||element==24||element==25||element==28){
-			//int init;
-			//int* val = &init;
 			long* val = getInt(info,entry,element);
 			char* temp = malloc(sizeof(char)*128);
 			int position = 0;
@@ -208,7 +197,6 @@ void insert(char* line){
 				*val = atol(temp);
 			else
 				*val = -888;
-			//printf("In Buffer: %d In Structure: %d\n", *val, *getInt(element));
 			temp = NULL;
 			free(temp);
 		}
@@ -229,7 +217,6 @@ void insert(char* line){
 			else
 				*val = -888;
 			temp = NULL;
-			//printf("In Buffer: %f In Structure: %f\n", *val, *getFloat(element));
 			free(temp);
 		}
 	}
