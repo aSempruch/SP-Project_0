@@ -134,13 +134,14 @@ void insert(char* line){
 	for(k = 0; k < strlen(line); k++)
 	{
 		element++;
+		if(line[k] == ' ')
+				k++;
 		//String type handling
 		if(element==1||element==2||element==7||element==10||element==11||element==12||element==15||element==17||element==18||element==20||element==21||element==22){
 			char** val = getString(info,entry,element);
 			//printf("Before: Val->%p | Struct->%p\n", *val, *getString(element));
-			int position = 0, par = 0;// print;
+			int position = 0, par = 0, space = 0;// print;
 			while(line[k] != ',' || par == 1){
-				//printf("Entering string reader for element %d\n", element);
 				//print = 0;
 				if(line[k] == '"'){
 					//Quotations Detected
@@ -152,12 +153,37 @@ void insert(char* line){
 					}
 				}
 				//if(print == 0){
-				*val = (char *)realloc(*val,position+2);
-				strncat(*val, &line[k], 1);
-				position++;
+				if((line[k] == ' ' || isprint(line[k]) == 0) && par == 0){
+						space++;
+						//if(element == 12)
+						//	printf("Detecting between %c %c %c\n", line[k-1], line[k],line[k+1]);
+				}
+				else{
+						//if(element == 12)
+								//printf("Spaces: %d Current char: %c\n", space, line[k]);
+						*val = (char *)realloc(*val,position+2);
+						strncat(*val, &line[k-space], 1+space);
+						//int t;
+						//if(element == 12)
+						//for(t = k-space; t < k+space; t++)
+						//		printf("Adding: %c\n", line[t]);
+						space = 0;
+				}
 				//}
+				position++;
 				k++;
 			}
+			//printf("Placing term in position: %d of  '%s' size of %d\n",position-space-1,*val,(int)strlen(*val));
+			//*val = (char *)realloc(*val, position-space);
+			//printf("%c\n",*val[0]);
+			//memmove(*val,*val,position-10);
+			/*char* temp = malloc(sizeof(char)*strlen(*val));
+			strcpy(temp, *val);
+			temp[position-space] = '\0';
+			strcpy(*val,temp);
+			if(element == 12)
+				printf("Pos: %d Space: %d Val: '%s'\n", position, space, *val);*/
+			//free(temp);
 			//*val[position] = '\0';
 			//printf("After: Val->%p | Struct->%p\n", *val, *getString(element));
 			//if(print == 1)
