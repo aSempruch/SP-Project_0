@@ -188,19 +188,7 @@ void printArr(movie **array, int size)
 	printf("\n");
 }
 
-char* remQ( char* token)
-{
-	//char* ret;
 
-	if(token[0] == '"')
-	{
-		char *ret = NULL;
-		ret = strncpy(ret, token+1, strlen(token)-1);
-		return ret;
-	}else{
-		return token;
-	}
-}
 void merge(movie **array, int p, int q, int r, char *word)
 {
 //p(l), q(m), r(r)
@@ -264,8 +252,6 @@ void merge(movie **array, int p, int q, int r, char *word)
 			if(temp1[0] == '"') temp1 = temp1+1;
 					
 			if(temp2[0] == '"') temp2 = temp2 +1;
-
-			if
 
 	
 //printf("temp1-----> %s      temp2-----> %s\n", temp1,temp2);
