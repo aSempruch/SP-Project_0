@@ -4,10 +4,49 @@ Alan Sempruch, Sarah Khasawneh
 
 
 Input:
-	The Merger is designed to take in a csv file with 28 distinct categories in which the output file can by sorted by.  Each of these 28 categories is either a string of characters, a long, or a float.  
+	The Merger is designed to take in a csv file with 28 distinct categories in which the output file can by sorted by.  Each of these 28 categories is either a string of characters, a long, or a float.
+
+Use:
 	
+	./sorter <value type> <column>
+
+    <value type> - specifies what value type to sort on. The supported value types are:
+			-c : column
+	<column> - specifies which column to sort the file by. Supported column names are:
+			color
+			string
+			num_critic_for_reviews
+			duration
+			director_facebook_likes
+			actor_3_facebook_likes
+			actor_2_name
+			actor_1_facebook_likes
+			gross
+			genres
+			actor_1_name
+			movie_title
+			num_voted_users
+			cast_total_facebook_likes
+			actor_3_name
+			facenumber_in_poster
+			plot_keywords
+			movie_imdb_link
+			num_user_for_reviews
+			language
+			country
+			content_rating
+			budget
+			title_year
+			actor_2_facebook_likes
+			imdb_score
+			aspect_ratio
+			movie_facebook_likes
+	
+	Pipe the input file through STDIN as such
+		cat file.csv | ./sorter -c movie_title
+
 Output:
-	The output is in the format of a csv file that lists the resulting array in acending order based of the keyword given upon running the program. The first line of the file contains the 28 distinct categories. 	
+	The output is in the format of a csv file that lists the resulting array in acending order based of the keyword given upon running the program. The first line of the file contains the 28 distinct categories. In order to save the output to a file, proceed the command with " > output_file_name.csv"
 
 Design:
 	The csv file is read from stdin and written into a temporary file, named .temp, for easier use. The file is removed on program exit.
@@ -32,7 +71,7 @@ sorter.h:
 	void print(): takes in the array, and the number of entries, then prints the final data from the array of structs  in order. 
 
 Assumptions:
-	
+	CSV file used as input has exactly 28 categories, which are labeled exactly the same way (as in the test file we were given).
 	
 Difficulties:
 	One major problem we ran into other than segmentation faults was our algorithm was duplicating certain elements and overwriting others. This lead to an incorrect output. 

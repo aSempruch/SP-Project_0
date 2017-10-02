@@ -141,7 +141,7 @@ int getKey(char *key)
 		return 13;
 	if(strcmp(var, "cast_total_facebook_likes") == 0)
 		return 14;
-	if(strcmp(var, "actor_3_name;") == 0)
+	if(strcmp(var, "actor_3_name") == 0)
 		return 15;
 	if(strcmp(var, "facenumber_in_poster") == 0)
 		return 16;
