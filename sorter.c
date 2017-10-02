@@ -264,7 +264,7 @@ int main(int argc, char* argv[])
 		printf("ERROR02: Empty file. Exiting Program.\n");
 		return 0;
 	}
-	else if(getKey() == 30)
+	else if(getKey(argv[1]) == 30)
 	{
 		printf("ERROR03: Invalid key word. Exiting Program.\n");
 		return 0;
