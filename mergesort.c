@@ -12,12 +12,13 @@ void mergesort(movie **array, int l, int r, char *word)
 
 	if(l<r)
 	{
-		int m = (l+r)/2;
-		mergesort(array,l,m, key);
-		mergesort(array,m+1, r, key);
+		int m = ((l+r)/2);
+		//if((l-r) > 1)
+			mergesort(array,l,m, key);
+		//if((l-r) > 1)
+			mergesort(array,m+1, r, key);
 		merge(array, l, m, r, key);
 	}
-
 }
 
 
@@ -196,7 +197,7 @@ void merge(movie **array, int l, int m, int r, char *word)
 
 	int i,j,k;
 	char *keyWord = word;
-	int m1 = m-l+1, m2 = r-m;	
+	int m1 = m-l+1, m2 = r-m;
 
 
 	movie **left =    malloc(sizeof(movie)*m1);
@@ -209,22 +210,23 @@ void merge(movie **array, int l, int m, int r, char *word)
 		left[i] = array[l+i];
 	}
 
-	printf("Left Array: ");
-	printArr(left,m1);
+	//printf("Left Array: ");
+	//printArr(left,m1);
 
 	for(j=0; j<m2;j++)
 	{
 		//printf("q: %d......j: %d.......m2: %d \n", q,j,m2);
-		right[j] = array[m+j+1];
+		/*if(j > 0){
+			if(array[m+j+1] != right[j-1]){
+				right[j] = array[m+j+1];
+			}
+		}else*/
+				right[j] = array[m+j+1];
 
 	}
-	printf("Right Array: ");
-	printArr(right,m2);
-
-
-
-	printf("\n");
-
+	//printf("Right Array: ");
+	//printArr(right,m2);
+	
 	i=0;
 	j=0;
 	k=l;
@@ -282,6 +284,7 @@ void merge(movie **array, int l, int m, int r, char *word)
 			j++;
 			k++;
 		}	
+		//printf("\n");
 		//free(tokenA);
 		//free(tokenB);
 	}
