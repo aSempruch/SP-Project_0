@@ -32,18 +32,18 @@ void allocate(int rows){
 void deallocate(int rows){
 	int r;
 	for(r = 0; r < rows; r++){
-		free(&info[r]->color);
-		free(&info[r]->director_name);
-		free(&info[r]->actor_2_name);
-		free(&info[r]->genres);
-		free(&info[r]->actor_1_name);
-		free(&info[r]->movie_title);
-		free(&info[r]->actor_3_name);
-		free(&info[r]->plot_keywords);
-		free(&info[r]->movie_imdb_link);
-		free(&info[r]->language);
-		free(&info[r]->country);
-		free(&info[r]->content_rating);
+		free(info[r]->color);
+		free(info[r]->director_name);
+		free(info[r]->actor_2_name);
+		free(info[r]->genres);
+		free(info[r]->actor_1_name);
+		free(info[r]->movie_title);
+		free(info[r]->actor_3_name);
+		free(info[r]->plot_keywords);
+		free(info[r]->movie_imdb_link);
+		free(info[r]->language);
+		free(info[r]->country);
+		free(info[r]->content_rating);
 		free(info[r]);
 	}
 	free(info);
@@ -327,7 +327,7 @@ int main(int argc, char* argv[])
 	//printf("Genres: '%s'\n", info[100]->genres);
 	//printf("Num of entries: %d\n", numOfEntries);
 	//printf("Deallocating\n");
-	//deallocate(numOfEntries);
+	deallocate(numOfEntries);
 	fclose(fp);
 	remove(".temp");
 	return 0;

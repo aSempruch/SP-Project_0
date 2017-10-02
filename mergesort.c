@@ -113,7 +113,7 @@ int getKey(char *key)
 
 //printf("Key sorted by ----> %s.\n", key);
 	char *var = key;
-	if(strcmp(var, "Color") == 0)
+	if(strcmp(var, "color") == 0)
 		return  1;
 	if(strcmp(var, "director_name") == 0)
 		return 2;
