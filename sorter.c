@@ -77,7 +77,6 @@ char** getString(movie** info,int entry, int element){
 		case 22:
 			return &info[entry]->content_rating;
 	}
-	//printf("Returning Null\n");
 	return NULL;
 }
 
@@ -164,23 +163,7 @@ void insert(char* line){
 				position++;
 				k++;
 			}
-			//printf("Placing term in position: %d of  '%s' size of %d\n",position-space-1,*val,(int)strlen(*val));
-			//*val = (char *)realloc(*val, position-space);
-			//printf("%c\n",*val[0]);
-			//memmove(*val,*val,position-10);
-			/*char* temp = malloc(sizeof(char)*strlen(*val));
-			strcpy(temp, *val);
-			temp[position-space] = '\0';
-			strcpy(*val,temp);
-			if(element == 12)
-				printf("Pos: %d Space: %d Val: '%s'\n", position, space, *val);*/
-			//free(temp);
-			//*val[position] = '\0';
-			//printf("After: Val->%p | Struct->%p\n", *val, *getString(element));
-			//if(print == 1)
-				//printf("In Buffer: |%s| In Structure: |%s|\n", *val, *getString(element));
-			//free(val);
-		}
+	}
 
 
 		//Int type handling
@@ -228,7 +211,6 @@ FILE* stdinToFile(){
 	while(!feof(stdin)){
 		fgets(stream,sizeof(stream),stdin);
 		fputs(stream, fp);
-		//printf("Reading line: %s\n", stream);
 	}
 	//rewind(fp);
 	fclose(fp);
@@ -242,36 +224,21 @@ FILE* stdinToFile(){
 int main(int argc, char* argv[])
 {
 	
-	if(argc != 2)
+	if(argc != 3)
 	{
-		printf("ERROR00: Invalid number of inputs.\n");
+		printf("ERROR00: Invalid number of inputs. Exiting\n");
 		return 0;
 	}
-	//char *file = argv[1];
-	
+	if(strcmp(argv[1], "-c") != 0){
+		printf("ERROR01: Invalid value type to sort on. Exiting\n");
+		return 0;
+	}
+		
 	/*		STEP 1
 	 *Note: 'info' will be the array the file will be written into.
 	 *Also the file pointer and opener will be innitalized here too. 
 	 */
 	
-/*	if(!(fp = fopen(argv[1],"r")))
-	{
-		printf("ERROR01: Unable to open file, or file not found. Exiting Program.\n");
-		return 0;
-	}
-	else if(fp == NULL)
-	{
-		printf("ERROR02: Empty file. Exiting Program.\n");
-		return 0;
-	}
-	else if(getKey(argv[1]) == 30)
-	{
-		printf("ERROR03: Invalid key word. Exiting Program.\n");
-		return 0;
-	}		
-
-*/
-
 	entry = -1;
 	   
 	 /*		STEP 2.1
@@ -302,10 +269,10 @@ int main(int argc, char* argv[])
 */
         if(fp == NULL)
         {
-                printf("ERROR02: Empty file. Exiting Program.\n");
+                printf("ERROR02: Empty input. Exiting Program.\n");
                 return 0;
         }
-        else if(getKey(argv[1]) == 30)
+        else if(getKey(argv[2]) == 30)
         {
                 printf("ERROR03: Invalid key word. Exiting Program.\n");
                 return 0;
@@ -328,13 +295,20 @@ int main(int argc, char* argv[])
 		//printf("Stream --> %s\n", stream);
 		if(k != 0)
 			insert(stream);
-		else
+		else{
+				printf("%s\n", stream);
+				if(strcmp(stream, "color,director_name,num_critic_for_reviews,duration,director_facebook_likes,actor_3_facebook_likes,actor_2_name,actor_1_facebook_likes,gross,genres,actor_1_name,movie_title,num_voted_users,cast_total_facebook_likes,actor_3_name,facenumber_in_poster,plot_keywords,movie_imdb_link,num_user_for_reviews,language,country,content_rating,budget,title_year,actor_2_facebook_likes,imdb_score,aspect_ratio,movie_facebook_likes\") != 0){
+				printf("ERROR04: Invalid column titles. Exiting\n");
+				deallocate(numOfEntries);
+				return 0;
+			}
 			k = 1;
+		}
 		entry++;
 	}
 
 
-	mergesort(info, 0, numOfEntries-2,argv[1]);
+	mergesort(info, 0, numOfEntries-2,argv[2]);
 
 	//mergesort(info, 0, numOfEntries,argv[1]);
 	print(info, numOfEntries);
