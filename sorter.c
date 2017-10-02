@@ -254,7 +254,7 @@ int main(int argc, char* argv[])
 	 *Also the file pointer and opener will be innitalized here too. 
 	 */
 	
-	/*if(!(fp = fopen(argv[1],"r")))
+/*	if(!(fp = fopen(argv[1],"r")))
 	{
 		printf("ERROR01: Unable to open file, or file not found. Exiting Program.\n");
 		return 0;
@@ -270,8 +270,8 @@ int main(int argc, char* argv[])
 		return 0;
 	}		
 
-
 */
+
 	entry = -1;
 	   
 	 /*		STEP 2.1
@@ -293,7 +293,23 @@ int main(int argc, char* argv[])
 	}
 
 	rewind(fp);
-
+/*
+	if(!(fp = fopen(argv[1],"r")))
+        {
+                printf("ERROR01: Unable to open file, or file not found. Exiting Program.\n");
+                return 0;
+        }
+*/
+        if(fp == NULL)
+        {
+                printf("ERROR02: Empty file. Exiting Program.\n");
+                return 0;
+        }
+        else if(getKey(argv[1]) == 30)
+        {
+                printf("ERROR03: Invalid key word. Exiting Program.\n");
+                return 0;
+        }
 
 
 	/*		STEP 2.2
